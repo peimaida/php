@@ -1,0 +1,543 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:63:"E:\phpStudy\WWW\backend/application/index\view\index\index.html";i:1488448155;s:58:"E:\phpStudy\WWW\backend/application/index\view\layout.html";i:1488091817;s:58:"E:\phpStudy\WWW\backend/application/index\view\header.html";i:1488359477;s:58:"E:\phpStudy\WWW\backend/application/index\view\footer.html";i:1488359481;}*/ ?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<title><?php echo $data['module_name']; ?></title>
+<meta name="description" content="<?php echo $data['module_description']; ?>">
+<meta name="keywords" content="<?php echo $data['module_keywords']; ?>">
+<?php echo $data['module_js']; ?>
+<?php echo $data['module_css']; ?>
+</head>
+<body>
+
+   <header>
+     <div class="left">
+       <a href="javascript:;" class="slide-menu" target="_self">
+         <img src="__FRONT_PUBLIC__/images/top_01.png" alt="menu">
+       </a>
+     </div>
+     <div class="center_item">
+       <a href="/">
+         <img src="__FRONT_PUBLIC__/images/top_03.png" alt="misumi" />
+       </a>
+     </div>
+     <div class="right">
+       <a href="javascript:;" class="contact" target="_self">
+         <img src="__FRONT_PUBLIC__/images/top_02.png" alt="contact">
+       </a>
+     </div>
+   </header>
+
+<!-- menu-list -->
+<div class="slide-mask"></div>
+<aside class="slide-wrapper">
+   <div>
+     <ul>
+       <li class="slide-1st">
+         <a href="/" target="_self">
+           <img src="__FRONT_PUBLIC__/images/Guide/guide_01.png" alt="misumi" />
+         </a>
+       </li>
+       <li class="slide-list">
+	     <a href="/" target="_self" class="list-left">
+             <img src="__FRONT_PUBLIC__/images/Guide/guide_02.png" alt="home" />
+             <span>首页</span>
+             <span class="list-right">></span>
+       </a>
+       </li>
+       <li class="slide-list">
+	     <a href="/category" target="_self" class="list-left" onclick="setSession(1)">
+             <img src="__FRONT_PUBLIC__/images/Guide/guide_03.png" alt="home" />
+             <span>商品分类</span>
+             <span class="list-right">></span>
+       </a>
+       </li>
+       <li class="slide-list">
+	     <a href="/topic" target="_self" class="list-left">
+             <img src="__FRONT_PUBLIC__/images/Guide/guide_05.png" alt="home" />
+             <span>活动特辑</span>
+             <span class="list-right">></span>
+       </a>
+       </li>
+       <li class="slide-list">
+	     <a href="/news" target="_self" class="list-left">
+             <img src="__FRONT_PUBLIC__/images/Guide/guide_04.png" alt="home" />
+             <span>新闻中心</span>
+             <span class="list-right">></span>
+       </a>
+       </li>
+       <li class="slide-list">
+	     <a href="/incad" target="_self" class="list-left">
+             <img src="__FRONT_PUBLIC__/images/Guide/guide_06.png" alt="home" />
+             <span>案例库</span>
+             <span class="list-right">></span>
+       </a>
+       </li>
+       <li class="slide-list">
+	     <a href="https://www.misumi-ec.com/cn/product/MN001ProductCheckCmd.do" target="_self" class="list-left">
+             <img src="__FRONT_PUBLIC__/images/Guide/guide_07.png" alt="home" />
+             <span>型号确认</span>
+             <span class="list-right">></span>
+       </a>
+       </li>
+       <li class="slide-list">
+	     <a href="/follow" target="_self" class="list-left">
+             <img src="__FRONT_PUBLIC__/images/Guide/guide_08.png" alt="home" />
+             <span>关注我们</span>
+             <span class="list-right">></span>
+       </a>
+       </li>
+     </ul>
+   </div>
+</aside>
+<!-- menu-list -->
+
+<!-- contact -->
+<div class="slide-contact">
+   <aside class="con-wrapper">
+      <div>
+        <ul>
+          <li>
+          <div class="sub-title">
+            <p>咨询电话</p>
+            <span class="close_btn"><img src="__FRONT_PUBLIC__/images/contact/close-btn.png" alt="close" /></span>
+          </div>
+          </li>
+          <li>
+            <div class="call-numble">
+              <a href="tel:021-67108701"><span>021-6710-8701</span></a>
+            </div>
+          </li>
+          <li>
+            <div class="call-time">
+              <span>受理时间：8:00～18:00<br />（周一～周六，不包括中国法定节假日）</span>
+            </div>
+          </li>
+          
+          <li>
+            <div class="show-content">
+            <h5 class="sub-title-infor"><span>语音快捷拨号一览</span></h5>
+            <p class="world-infor-1">(<span>※</span>例：电话拨通后，按<strong>3</strong>再按<span><img src="__FRONT_PUBLIC__/images/contact/number-img.png"/></span>即可接入工厂自动化零件)</p>
+            <div class="show-infor">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td class="oneL"><img src="__FRONT_PUBLIC__/images/contact/show-ico-1.png" /></td>
+                        <td class="space"></td>
+                        <td class="oneTW" valign="center">
+                            <span>询价及订购</span>
+                        </td>
+                        <td class="space"></td>
+                        <td class="oneTh" align="center">
+                            <span>请按</span><strong>1</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="space-h" colspan="5"></td>
+                    </tr>
+                    <!--2-->
+                    <tr>
+                        <td class="oneL"><img src="__FRONT_PUBLIC__/images/contact/show-ico-2.png" /></td>
+                        <td class="space"></td>
+                        <td class="oneTW" valign="center">
+                            <span>网站及WOS使用相关</span>
+                        </td>
+                        <td class="space"></td>
+                        <td class="oneTh" align="center">
+                            <span>请按<strong>2</strong></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="space-h" colspan="5"></td>
+                    </tr>
+                    <!--3-->
+                    <tr>
+                        <td class="oneL-2"><img src="__FRONT_PUBLIC__/images/contact/show-ico-3.png" /></td>
+                        <td class="space"></td>
+                        <td class="oneTW oneTW-2" valign="top">
+                            <span>商品技术咨询</span>
+                            <p>工厂自动化零件</p>
+                            <p class="img-ico-2">电子·电气配线零部件</p>
+                            <p class="img-ico-3">刀具·工厂用品</p>
+                            <p class="img-ico-4">劳防·办公用品</p>
+                            <p class="img-ico-5">冲压模具</p>
+                            <p class="img-ico-6">塑料模具</p>
+                            <p class="img-ico-7">其他</p>
+                        </td>
+                        <td class="space"></td>
+                        <td class="oneTh" align="center" valign="center">
+                            <span class="oneth-1">请按<strong>3</strong></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="space-h" colspan="5"></td>
+                    </tr>
+                    <!--4-->
+                    <tr>
+                        <td class="oneL"><img src="__FRONT_PUBLIC__/images/contact/show-ico-4.png" /></td>
+                        <td class="space"></td>
+                        <td class="oneTW" valign="center">
+                            <span>新客户注册及目录申请</span>
+                        </td>
+                        <td class="space"></td>
+                        <td class="oneTh" align="center">
+                            <span>请按<strong>4</strong></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="space-h" colspan="5"></td>
+                    </tr>
+                    <!--5-->
+                    <tr>
+                        <td class="oneL"><img src="__FRONT_PUBLIC__/images/contact/show-ico-5.png" /></td>
+                        <td class="space"></td>
+                        <td class="oneTW" valign="center">
+                            <span>发票财务</span>
+                        </td>
+                        <td class="space"></td>
+                        <td class="oneTh" align="center">
+                            <span>请按<strong>5</strong></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="space-h" colspan="5"></td>
+                    </tr>
+                    <!--6-->
+                    <tr>
+                        <td class="oneL"><img src="__FRONT_PUBLIC__/images/contact/show-ico-6.png" /></td>
+                        <td class="space"></td>
+                        <td class="oneTW" valign="center">
+                            <span>其他业务</span>
+                        </td>
+                        <td class="space"></td>
+                        <td class="oneTh" align="center">
+                            <span>请按<strong>6</strong></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="space-h" colspan="5"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+          </li>
+        </ul>
+      </div>
+    </aside>
+</div>
+<!-- contact -->
+<script type="text/javascript" src="__FRONT_PUBLIC__/js/headerJs.js"></script>
+<script>
+$(function(){
+$('aside.con-wrapper').on('touchstart', 'li', function(e){
+$(this).addClass('current').siblings('li').removeClass('current');
+});
+
+$('a.contact').on('click', function(e){
+var wh = $('div.wrapperhove'+'rtree').height();
+$('div.slide-contact').css('height', wh).show();
+$('aside.con-wrapper').css('height', wh).addClass('moved');
+});
+
+$('div.slide-contact').on('click', function(){
+$('div.slide-contact').hide();
+$('aside.con-wrapper').removeClass('moved');
+});
+});
+</script>
+
+<!-- 显示窗口事件 -->
+<script>
+$(function(){
+$('aside.slide-wrapper').on('touchstart', 'li', function(e){
+$(this).addClass('current').siblings('li').removeClass('current');
+});
+
+$('a.slide-menu').on('click', function(e){
+var wh = $('div.wrapperhove'+'rtree').height();
+$('div.slide-mask').css('height', wh).show();
+$('aside.slide-wrapper').css('height', wh).addClass('moved');
+});
+
+$('div.slide-mask').on('click', function(){
+$('div.slide-mask').hide();
+$('aside.slide-wrapper').removeClass('moved');
+});
+});
+</script>
+		<div class="container">
+			<div class="swipe">
+				<ul id="slider">
+				<?php if($banners_result): if(is_array($banners_result) || $banners_result instanceof \think\Collection): if( count($banners_result)==0 ) : echo "" ;else: foreach($banners_result as $key=>$value): ?>
+					<li>
+					<?php if($value['url']): ?>
+						<a href="https://www.baidu.com/">
+					<?php else: ?>
+						<a href="javascript:void(0);">
+					<?php endif; ?>
+						<img src="../../../../public/uploads/banners/<?php echo $value['source_image']; ?>" alt="<?php echo $value['banner_title']; ?>">
+						</a>
+					</li>
+				<?php endforeach; endif; else: echo "" ;endif; endif; ?>
+				</ul>
+				<!--提示小按钮-->
+				<?php if($banners_num>0): ?>
+				<div id="pagenavi">
+					<a href="javascript:void(0);" class="active"></a>
+					<?php if($banners_num>1): $__FOR_START_27339__=1;$__FOR_END_27339__=$banners_num;for($i=$__FOR_START_27339__;$i < $__FOR_END_27339__;$i+=1){ ?>
+					<a href="javascript:void(0);" class=""></a>
+					<?php } endif; ?>
+				</div>
+				<?php endif; ?>
+				<!--左右按钮-->
+				<div class="btnContent">
+					<a class="beforeShow" href="javascript:void(0);" onClick="t4.prev();"></a>
+					<a class="nextShow" href="javascript:void(0);" onClick="t4.next();"></a>
+				</div>
+			</div>
+
+			<div class="menu-list">
+				<div class="menu-li">
+					<div class="show-menu">
+						<dl class="show-box">
+							<a href="/category" target="_self" onclick="setSession(1)">
+								<dd><img src="../../../../public/static/front/images/menu-bgcolor.png" alt="categroy" /></dd>
+								<dt>
+              <ul>
+              <li class="icon"><img src="../../../../public/static/front/images/top_04.png" /></li>
+              <li><span>商品分类</span></li>
+              </ul>
+            </dt>
+							</a>
+						</dl>
+						<dl class="show-box">
+							<a href="/topic" target="_self">
+								<dd><img src="../../../../public/static/front/images/menu-bgcolor.png" alt="topic" /></dd>
+								<dt>
+              <ul>
+              <li class="icon"><img src="../../../../public/static/front/images/top_06.png" /></li>
+              <li><span>活动特辑</span></li>
+              </ul>
+            </dt>
+							</a>
+						</dl>
+						<dl class="show-box">
+							<a href="/news" target="_self">
+								<dd><img src="../../../../public/static/front/images/menu-bgcolor.png" alt="news" /></dd>
+								<dt>
+              <ul>
+              <li class="icon"><img src="../../../../public/static/front/images/top_05.png" /></li>
+              <li><span>新闻中心</span></li>
+              </ul>
+            </dt>
+							</a>
+						</dl>
+					</div>
+					<div class="show-menu">
+						<dl class="show-box">
+							<a href="/incad" target="_self">
+								<dd><img src="../../../../public/static/front/images/menu-bgcolor.png" alt="incad" /></dd>
+								<dt>
+              <ul>
+              <li class="icon"><img src="../../../../public/static/front/images/top_07.png" /></li>
+              <li><span class="special">案例库</span></li>
+              </ul>
+            </dt>
+							</a>
+						</dl>
+						<dl class="show-box">
+							<a href="https://www.misumi-ec.com/cn/product/MN001ProductCheckCmd.do" target="_self">
+								<dd><img src="../../../../public/static/front/images/menu-bgcolor.png" alt="confirm" /></dd>
+								<dt>
+              <ul>
+              <li class="icon"><img src="../../../../public/static/front/images/top_08.png" /></li>
+              <li><span>型号确认</span></li>
+              </ul>
+            </dt>
+							</a>
+						</dl>
+					</div>
+				</div>
+			</div>
+
+			<div class="cate-list">
+				<div class="cate-naevi">
+					<a href="/category" target="_self" class="left" onclick="setSession(1)">
+						<img src="../../../../public/static/front/images/top_09.png" alt="categroy" />
+						<span>商品分类</span>
+					</a>
+					<a href="/category" class="right" target="_self" onclick="setSession(1)"><img src="../../../../public/static/front/images/top_10.png" /></a>
+				</div>
+				<div class="cate-li">
+					<ul>
+						<li>
+							<a class="li-detail" href="/category" onclick="setSession(1)">
+								<img src="../../../../public/static/front/images/topC_1.png" alt="categroy" class="img" />
+								<span>工厂自动化<br />零件</span>
+							</a>
+							<a class="li-detail" href="/category" onclick="setSession(2)">
+								<img src="../../../../public/static/front/images/topC_2.png" alt="categroy" class="img" />
+								<span>螺钉/螺栓<br />垫圈/螺帽</span>
+							</a>
+							<a class="li-detail li-last" href="/category" onclick="setSession(3)">
+								<img src="../../../../public/static/front/images/topC_3.png" alt="categroy" class="img" />
+								<span>工业用材料</span>
+							</a>
+						</li>
+						<li>
+							<a class="li-detail" href="/category" onclick="setSession(4)">
+								<img src="../../../../public/static/front/images/topC_4.png" alt="categroy" class="img" />
+								<span>接线</span>
+							</a>
+							<a class="li-detail" href="/category" onclick="setSession(5)">
+								<img src="../../../../public/static/front/images/topC_5.png" alt="categroy" class="img" />
+								<span>控制</span>
+							</a>
+							<a class="li-detail li-last" href="/category" onclick="setSession(6)">
+								<img src="../../../../public/static/front/images/topC_6.png" alt="categroy" class="img" />
+								<span>切削刀具</span>
+							</a>
+						</li>
+						<li>
+							<a class="li-detail" href="/category" onclick="setSession(7)">
+								<img src="../../../../public/static/front/images/topC_7.png" alt="categroy" class="img" />
+								<span>生产加工品</span>
+							</a>
+							<a class="li-detail" href="/category" onclick="setSession(8)">
+								<img src="../../../../public/static/front/images/topC_8.png" alt="categroy" class="img" />
+								<span>捆包/物流<br />保管用品</span>
+							</a>
+							<a class="li-detail li-last" href="/category" onclick="setSession(9)">
+								<img src="../../../../public/static/front/images/topC_9.png" alt="categroy" class="img" />
+								<span>安全用品<br />办公用品</span>
+							</a>
+						</li>
+						<li>
+							<a class="li-detail" href="/category" onclick="setSession(10)">
+								<img src="../../../../public/static/front/images/topC_10.png" alt="categroy" class="img" />
+								<span>研究管理<br />用品</span>
+							</a>
+							<a class="li-detail" href="/category" onclick="setSession(11)">
+								<img src="../../../../public/static/front/images/topC_11.png" alt="categroy" class="img" />
+								<span>冲压模具<br />用零件</span>
+							</a>
+							<a class="li-detail li-last" href="/category" onclick="setSession(12)">
+								<img src="../../../../public/static/front/images/topC_12.png" alt="categroy" class="img" />
+								<span>塑料模具<br />用零件</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="topic-list">
+				<div class="cate-naevi">
+					<a href="/topic" target="_self" class="left">
+						<img src="../../../../public/static/front/images/top_23.png" alt="categroy" />
+						<span>活动特辑</span>
+					</a>
+					<a href="/topic" class="right" target="_self"><img src="../../../../public/static/front/images/top_10.png" /></a>
+				</div>
+				<div class="top-li">
+					<div class="show-news-content">
+					<?php if($events_result): if(is_array($events_result) || $events_result instanceof \think\Collection): if( count($events_result)==0 ) : echo "" ;else: foreach($events_result as $key=>$value): ?>
+						<dl class="show-box">
+							<a href="/index/topic/detail/<?php echo $value['id']; ?>" target="_self">
+								<dd><img src="../../../../public/uploads/events/title_image/<?php echo $value['source_title_image']; ?>" alt="<?php echo $value['event_title']; ?>" /></dd>
+								<dt><span><?php echo $value['event_title']; ?></span></dt>
+							</a>
+						</dl>
+					<?php endforeach; endif; else: echo "" ;endif; endif; ?>
+					</div>
+				</div>
+			</div>
+
+			<div class="news-list">
+				<div class="cate-naevi">
+					<a href="/news" target="_self" class="left">
+						<img src="../../../../public/static/front/images/top_25.png" alt="categroy" />
+						<span>新闻中心</span>
+					</a>
+					<a href="/news" class="right" target="_self"><img src="../../../../public/static/front/images/top_10.png" /></a>
+				</div>
+				<?php if($news_result): if(is_array($news_result) || $news_result instanceof \think\Collection): if( count($news_result)==0 ) : echo "" ;else: foreach($news_result as $key=>$value): ?>
+				<div class="news-li1">
+					<div class="left-i">
+						<a href="/index/news/detail/<?php echo $value['id']; ?>"><img src="../../../../public/uploads/posts/title_image/<?php echo $value['source_title_image']; ?>" alt="<?php echo $value['post_title']; ?>" /></a>
+					</div>
+					<div class="txt-r">
+						<?php if($value['tag_id']==1): ?>
+						<p class="p1">
+							<span><?php echo $tag_name[1]; ?></span>
+						<?php endif; if($value['tag_id']==2): ?>
+						<p class="p3">
+							<span><?php echo $tag_name[2]; ?></span>
+						<?php endif; ?>
+						<?php echo date("Y-m-d",$value['start_time']); ?>
+						</p>
+						<a href="/index/news/detail/<?php echo $value['id']; ?>"><p class="tit">
+							<?php echo $value['post_title']; ?>
+						</p></a>
+						<div class="p2">
+							<?php echo $value['post_content']; ?>
+						</div>
+					</div>
+				</div>
+				<?php endforeach; endif; else: echo "" ;endif; endif; ?>
+			<div class="incad">
+				<div class="cate-naevi">
+					<a href="/incad" target="_self" class="left">
+						<img src="../../../../public/static/front/images/top_28.png" alt="categroy" />
+						<span>inCAD Library案例库</span>
+					</a>
+					<a href="/incad" class="right" target="_self"><img src="../../../../public/static/front/images/top_10.png" /></a>
+				</div>
+				<div class="incad-li">
+					<div class="show-incad">
+						<dl class="incad-box">
+							<a href="/incad/detail/000016" target="_self">
+								<dd><img src="../../../../public/static/front/images/top_29.png" alt="incad" /></dd>
+								<dt class="title"><span>NO.000016 导通检查夹具</span></dt>
+								<dt class="txt1"><span>通过拉伸弹簧使稳态位置处于断开位置</span></dt>
+							</a>
+						</dl>
+						<dl class="incad-box">
+							<a href="/incad/detail/000223" target="_self">
+								<dd><img src="../../../../public/static/front/images/top_29.png" alt="incad" /></dd>
+								<dt class="title"><span>No.000223 气缸层叠机构</span></dt>
+								<dt class="txt1"><span>接受滑轨上移动工件，纵向层叠存放5个</span></dt>
+							</a>
+						</dl>
+						<dl class="incad-box">
+							<a href="/incad/detail/000288" target="_self">
+								<dd><img src="../../../../public/static/front/images/top_29.png" alt="incad" /></dd>
+								<dt class="title"><span>No.000288 使用了连杆的挡块机构</span></dt>
+								<dt class="txt1"><span>利用旋转运动达到从垂直→水平运动转换</span></dt>
+							</a>
+						</dl>
+					</div>
+				</div>
+			</div>
+		</div>		
+		<script src="../../../../public/static/front/js/touchslider.js"></script>
+		<script src="../../../../public/static/front/js/topjs.js"></script>
+<div class="footer">
+	<div class="foot-01">
+		<a href="#" class="left"><img src="../../../public/static/front/images/mobile-bnt.png" alt="mobile" /><span>手机版</span></a>
+		<a href="http://cn.misumi-ec.com/" class="right"><span>电脑版</span><img src="../../../public/static/front/images/PC-btn.jpg" alt="mobile" /></a>
+	</div>
+	<div class="copy-r">
+		<p class="logo"><img src="../../../public/static/front/images/top_30.png" alt="misumi" /></p>
+		<p class="copy-txt">Copyright © MISUMI Corporation All Rights Reserved.</p>
+	</div>
+
+
+</div>
+</body>
+</html>
+

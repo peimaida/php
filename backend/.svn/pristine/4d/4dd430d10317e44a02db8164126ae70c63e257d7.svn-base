@@ -1,0 +1,175 @@
+<section id="content">
+
+    <div class="page page-fullwidth-layout">
+
+        <div class="pageheader">
+
+            <h2>{$data.module_name}</h2>
+
+            <div class="page-bar">
+
+                <ul class="page-breadcrumb">
+                    <li>
+                        <a href="{:url($data.module_url)}"><i class="fa fa-list"></i> {$data.module_name}</a>
+                    </li>
+                    <li>
+                        <a href="{:url($data.module_url)}">{$data.module_title}列表</a>
+                    </li>
+                    <li>
+                        编辑{$data.module_title}
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="pagecontent">
+
+            <div class="add-nav">
+                <div class="nav-heading">
+                    <h3>编辑{$data.module_title}</h3>
+                    <span class="controls pull-right">
+                        <a href="{:url($data.module_url)}" class="btn btn-ef btn-ef-1 btn-ef-1-default btn-ef-1a btn-rounded-20 mr-5" data-toggle="tooltip" title="返回"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+                    </span>
+                </div>
+
+                <!-- row -->
+                <div class="row">
+                    <!-- col -->
+                    <div class="col-md-12">
+
+                        <!-- tile -->
+                        <section class="tile">
+
+                            <!-- tile body -->
+                            <div class="tile-body">
+
+                                <form name="posts_update_form" role="form" enctype="multipart/form-data" action="{:url($data.module_url).'update/'}{$item.id}" method="post">
+                                    {include file="custom-fields" /}
+                                    <input type="submit" name="posts_update" class="btn btn-info" onclick="get_img_url()" value="提交">
+                                    <input type="hidden" name="post_author_hide" value="{$item.post_author_hide}">
+                                    <input type="hidden" name="image_url" value="">
+                                    <input type="hidden" name="title_image_url" value="">
+                                    <input type="hidden" name="status_hide" value="{$item.status_hide}">
+                                    <input type="hidden" name="image_hide" value="{$item.image_hide}">
+                                    <input type="hidden" name="title_image_hide" value="{$item.title_image_hide}">
+                                    <input type="hidden" name="start_time_hide" value="{$item.start_time_hide}">
+                                    <input type="hidden" name="end_time_hide" value="{$item.end_time_hide}">
+
+                    			</form>
+
+                            </div>
+                            <!-- /tile body -->
+
+                        </section>
+                        <!-- /tile -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!--/ CONTENT -->
+
+<script type="text/javascript">
+    function get_img_url(){
+        var url = document.getElementById("feature_image").value; 
+        posts_update_form.image_url.value=url;
+        var title_url = document.getElementById("title_image").value; 
+        posts_update_form.title_image_url.value=title_url; 
+    }
+
+$(document).ready(function(){
+    $(".checkbox").find("input[value="+$("input[name=status_hide]").val()+"]").attr("checked","checked");
+
+    var start = $("input[name='start_time_hide']").val();
+    var end = $("input[name='end_time_hide']").val();
+
+    $("input[name='start_time']").datetimepicker({
+        format:"YYYY-MM-DD",
+        defaultDate:start
+    }).on("dp.change", function (e) {
+        $("input.datepicker[name='end_time']").data("DateTimePicker").minDate(e.date);
+        $('form').data('bootstrapValidator')  
+        .updateStatus('start_time', 'NOT_VALIDATED')  
+        .validateField('start_time');  
+    });
+
+    $("input[name='end_time']").datetimepicker({
+        format:"YYYY-MM-DD",
+        defaultDate:end
+    }).on("dp.change", function (e) {
+        $("input.datepicker[name='start_time']").data("DateTimePicker").maxDate(e.date);
+        $('form').data('bootstrapValidator')  
+        .updateStatus('end_time', 'NOT_VALIDATED')  
+        .validateField('end_time');
+    })
+})
+
+// function showimage(obj,flag) {
+//     var file = obj.files[0];
+//     var reader = new FileReader();
+//     var type_img = flag;
+//     var title_display = document.getElementById("show_title_image");
+//     var feature_display = document.getElementById("show_feature_image");
+
+//     //判断浏览器是否支持FileReader接口
+//     if (typeof FileReader == 'undefined') {
+//         if(type_img=='title_image'){
+//             document.getElementById("title_image_alert").InnerHTML = "当前浏览器不支持FileReader接口";
+//             //使选择控件不可操作
+//             document.getElementById("title_image").setAttribute("disabled", "disabled");
+//         }else if(type_img=='feature_image'){
+//             document.getElementById("feature_image_alert").InnerHTML = "当前浏览器不支持FileReader接口";
+//             //使选择控件不可操作
+//             document.getElementById("feature_image").setAttribute("disabled", "disabled");
+//         }
+//     }
+
+//     //标题图片
+//     if(type_img=='title_image'){
+//         var img = document.getElementById("title_image_preshow");
+//         title_display.style.display = "none";
+//     }
+//     //详情图片
+//     if(type_img=='feature_image'){
+//         var img = document.getElementById("feature_image_preshow");
+//         feature_display.style.display = "none";
+//     }
+    
+//     reader.onload = function (e) {
+//         //成功读取图片 
+//         if(type_img=='title_image'){//标题图片
+//             var img = document.getElementById("title_image_preshow");
+//         }
+//         if(type_img=='feature_image'){//详情图片
+//             var img = document.getElementById("feature_image_preshow");
+//         }
+//         console.log(e.target.result);              
+//         img.src = e.target.result;
+//     }
+//     reader.readAsDataURL(file)
+// }
+</script>
+
+<script src="../../../../public/static/back/js/post.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

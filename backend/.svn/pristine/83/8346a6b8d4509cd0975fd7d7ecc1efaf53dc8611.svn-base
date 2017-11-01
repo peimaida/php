@@ -1,0 +1,595 @@
+		<div class="container">
+			<div class="number">
+				<h1>No.000288 使用了连杆的挡块机构</h1>
+			</div>
+			<div class="menu_information">
+				<div class="title">
+					<div class="title_information">
+						<div class="inforamtion">
+							<p class="menu">实例概要</p>
+						</div>
+					</div>
+				</div>
+				<ul>
+					<li>
+						<div class="trouble_shooting">
+							<div class="trouble">
+								<span><p class="star">目的</p></span>
+								<img src="../../../../public/static/front/incad_detail/images/module_img_01.png" />
+							</div>
+							<div class="shooting">
+								<p>利用气缸使其暂时停止，用以调整传递到下一个工序的间距</p>
+							</div>
+							<img src="../../../../public/static/front/incad_detail/images/module_img_02.png" />
+						</div>
+					</li>
+					<li>
+						<div class="trouble_shooting">
+							<div class="trouble">
+								<span><p class="question">状况</p></span>
+								<img src="../../../../public/static/front/incad_detail/images/module_img_01.png" />
+							</div>
+							<div class="shooting">
+								<p>没有足够的空间，气缸无法防止在输送机侧面</p>
+							</div>
+							<img src="../../../../public/static/front/incad_detail/images/module_img_02.png" />
+						</div>
+					</li>
+					<li>
+						<div class="trouble_shooting">
+							<div class="trouble">
+								<span><p class="solve">解决方法</p></span>
+								<img src="../../../../public/static/front/incad_detail/images/module_img_01.png" />
+							</div>
+							<div class="shooting">
+								<p>气缸纵向放置，利用旋转运动达到从垂直→水平运动的转换</p>
+							</div>
+							<img src="../../../../public/static/front/incad_detail/images/module_img_02.png" />
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="case_first">
+				<div class="title">
+					<div class="title_information">
+						<div class="inforamtion">
+							<p class="case01">案例演示</p>
+						</div>
+					</div>
+				</div>
+				<div class="case_information_img">
+					<div class="case_img">
+						<img src="../../../../public/static/front/incad_detail/000288/images/img_01.jpg" />
+					</div>
+				</div>
+				<ul>
+					<li>
+						<div class="point">
+							<span>POINT &nbsp;<strong>1</strong></span>
+							<p>【跳点】的结构说明</p>
+						</div>
+						<div class="point_information">
+							<p>
+								没有直线导轨侧的触点上下方向的跳点，就不能实现水平运动
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="point">
+							<span>POINT &nbsp;<strong>2</strong></span>
+							<p>&nbsp;凸轮轴承的作用</p>
+						</div>
+						<div class="point_information">
+							<p>
+								用凸轮轴承实现【跳点】结构
+							</p>
+						</div>
+					</li>
+				</ul>
+				<div class="gif">
+					<div class="gif_img">
+						<div class="img"><img src="../../../../public/static/front/incad_detail/000288/images/000288.gif" /></div>
+					</div>
+				</div>
+			</div>
+			<div class="case_two">
+				<div class="title">
+					<div class="title_information">
+						<div class="inforamtion">
+							<p class="case02">案例库说明</p>
+						</div>
+					</div>
+				</div>
+				<ul>
+					<li class="select">
+						<div class="case_title">
+							<div class="case_title_information">
+								<p>环境、对象、规定说明</p>
+							</div>
+							<span></span>
+							<div class="click"><img src="../../../../public/static/front/incad_detail/images/btn_bottom.png" /></div>
+						</div>
+						<ul>
+							<li>
+								<p class="p_title">环境·操作性</p>
+								<p><strong>·</strong><span>调整输送机和下一个工序的节拍时间的差异的机构。</span></p>
+							</li>
+							<li>
+								<p class="p_title">对象工件</p>
+								<p><strong>·</strong><span>工件: 金属垫圈</span></p>
+								<p><strong>·</strong><span>尺寸： φ28×t8、内径10mm</span></p>
+								<p><strong>·</strong><span>重量： 约34g</span></p>
+							</li>
+							<li>
+								<p class="p_title">规格·尺寸</p>
+								<p><strong>·</strong><span>动作规格<br/>&gt;薄型气缸的行程：10mm<br/>&gt;挡块的行程：10mm</span></p>
+								<p><strong>·</strong><span>尺寸<br/>&gt;W125×D100×H249mm</span></p>
+							</li>
+							<li>
+								<p class="p_title">主要零件的选型依据</p>
+								<p><strong>·</strong><span>气缸<br/>&gt;为了节省空间，选择薄型气缸。</span></p>
+							</li>
+						</ul>
+					</li>
+					<li class="select">
+						<div class="case_title">
+							<div class="case_title_information">
+								<p>主要零件的计算过程</p>
+							</div>
+							<span></span>
+							<div class="click"><img src="../../../../public/static/front/incad_detail/images/btn_bottom.png" /></div>
+						</div>
+						<ul>
+							<li>
+								<p class="p_title">主要零件的计算过程</p>
+								<p><strong>·</strong><span>根据直线运动部分负载和凸轮重量验证气缸推力。</span></p>
+								<p><strong>·</strong><span>气缸的推力<br/>
+	                	&gt;所需推力： F=(F1×r1+F2×r2)/r<br/>
+	                	&gt;直线运动部分的负载： F1=μm×9.8N<br/>
+	                	&gt;直线导轨的摩擦系数： μ=0.1(实测值)<br/>
+	                	&gt;直线运动部分总重量： m=0.096kg<br/>
+	                	&gt;F1=0.1×0.096×9.8=0.0941N<br/>
+	                	&gt;凸轮的自重： F2=0.185kg×9.8m/sec²=1.814N<br/>
+	                	&gt;凸轮中心与直线运动部分之间的距离：r1=60mm<br/>
+	                	&gt;凸轮中心与凸轮重心之间的距离： r2=25.77mm(通过3D CAD测量)<br/>
+	                	&gt;凸轮中心与关节轴承之间的距离： r=60mm<br/>
+	                	&gt;F=(0.0941×60+1.814×25.77)/60=0.776N<br/>
+	                	&gt;动作空气压力为0.4MPa时的气缸理论推力： F0=80N(φ16)(根据产品目录)<br/>
+	                	&gt;将负载率设为η=50%<br/>
+	                	&gt;实际推力=F0×0.5=40N≫F，具有充分的余量</span></p>
+							</li>
+						</ul>
+					</li>
+					<li class="select">
+						<div class="case_title">
+							<div class="case_title_information">
+								<p>构造制作与设计要点</p>
+							</div>
+							<span></span>
+							<div class="click"><img src="../../../../public/static/front/incad_detail/images/btn_bottom.png" /></div>
+						</div>
+						<ul>
+							<li>
+								<p class="p_title">构造制作与设计要点</p>
+								<p><strong>·</strong><span>通过底座下的凸轮机构和气缸进行驱动</span></p>
+								<p><strong>·</strong><span>可同时使用2台进行避让。也可调整工件间距。</span></p>
+								<p><strong>·</strong><span>对于型材，通过螺栓组装3块经铣削加工的板，价格较低且可轻松确定连杆与直线导轨的平行度。</span></p>
+								<p><strong>·</strong><span>设计连接板时，紧密固定支点的导向轴和轴承，通过固定环固定导向轴单侧（左图中为相反侧），以便在不向轴承施加轴向负载的状态下进行定位。</span></p>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<!-- 零件表 -->
+			<div class="parts_list">
+				<div class="title">
+					<div class="title_information">
+						<div class="inforamtion">
+							<p class="part">零件表</p>
+						</div>
+					</div>
+				</div>
+				<ul>
+					<li class="list_information">
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300353170/?ProductCode=MSCCA16-10"><img src="../../../../public/static/front/incad_detail/000288/images/img_02.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300353170/?ProductCode=MSCCA16-10">
+										<p class="part_top">薄型气缸</p>
+									</a>
+									<p class="part_number">MSCCA16-10</p>
+									<p class="part_much">所需数量：1</p>
+								</div>
+							</div>
+						</div>
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300364370/?ProductCode=MGCLB32-100"><img src="../../../../public/static/front/incad_detail/000288/images/img_03.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300364370/?ProductCode=MGCLB32-100">
+										<p class="part_top">流速调速器</p>
+									</a>
+									<p class="part_number">SPSNL6-M5</p>
+									<p class="part_much">所需数量：2</p>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="list_information">
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300351250/?ProductCode=ME34L1"><img src="../../../../public/static/front/incad_detail/000288/images/img_04.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300351250/?ProductCode=ME34L1">
+										<p class="part_top">气缸用传感器</p>
+									</a>
+									<p class="part_number">ME33L1</p>
+									<p class="part_much">所需数量：2</p>
+								</div>
+							</div>
+						</div>
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300371730/"><img src="../../../../public/static/front/incad_detail/000288/images/img_05.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300371730/">
+										<p class="part_top">关节轴承</p>
+									</a>
+									<p class="part_number">PHSC10A</p>
+									<p class="part_much">所需数量：1</p>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="list_information">
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300363510/"><img src="../../../../public/static/front/incad_detail/000288/images/img_06.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300363510/">
+										<p class="part_top">薄型气缸用安装金属件</p>
+									</a>
+									<p class="part_number">CTKM25</p>
+									<p class="part_much">所需数量：1</p>
+								</div>
+							</div>
+						</div>
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300361570/"><img src="../../../../public/static/front/incad_detail/000288/images/img_07.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300361570/">
+										<p class="part_top">铰链座 单耳环型</p>
+									</a>
+									<p class="part_number">HKTBM10-H30</p>
+									<p class="part_much">所需数量：1</p>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="list_information">
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300041510/"><img src="../../../../public/static/front/incad_detail/000288/images/img_08.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300041510/">
+										<p class="part_top">直线导轨</p>
+									</a>
+									<p class="part_number">SEB16-70</p>
+									<p class="part_much">所需数量：1</p>
+								</div>
+							</div>
+						</div>
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300000210/"><img src="../../../../public/static/front/incad_detail/000288/images/img_09.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300000210/">
+										<p class="part_top">导向轴</p>
+									</a>
+									<p class="part_number">PSFJT10-55-M5</p>
+									<p class="part_much">所需数量：1</p>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="list_information">
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300101530/"><img src="../../../../public/static/front/incad_detail/000288/images/img_10.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300101530/">
+										<p class="part_top">轴承固定座</p>
+									</a>
+									<p class="part_number">BGRB6000ZZ-25</p>
+									<p class="part_much">所需数量：1</p>
+								</div>
+							</div>
+						</div>
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300020060/"><img src="../../../../public/static/front/incad_detail/000288/images/img_11.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300020060/">
+										<p class="part_top">固定环</p>
+									</a>
+									<p class="part_number">PSCLSJ10-13</p>
+									<p class="part_much">所需数量：1</p>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="list_information">
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300114650/"><img src="../../../../public/static/front/incad_detail/000288/images/img_12.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300114650/">
+										<p class="part_top">轴承用调整环</p>
+									</a>
+									<p class="part_number">CLBP10-14-15</p>
+									<p class="part_much">所需数量：1</p>
+								</div>
+							</div>
+						</div>
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300231730/"><img src="../../../../public/static/front/incad_detail/000288/images/img_13.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300231730/">
+										<p class="part_top">金属垫圈</p>
+									</a>
+									<p class="part_number">WSSM20-5-2</p>
+									<p class="part_much">所需数量：1</p>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="list_information">
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300111330/"><img src="../../../../public/static/front/incad_detail/000288/images/img_14.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300111330/">
+										<p class="part_top">凸轮轴承随动器</p>
+									</a>
+									<p class="part_number">CFFR5-13</p>
+									<p class="part_much">所需数量：2</p>
+								</div>
+							</div>
+						</div>
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110100140620/"><img src="../../../../public/static/front/incad_detail/000288/images/img_15.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110100140620/">
+										<p class="part_top">定位销</p>
+									</a>
+									<p class="part_number">MS5-15</p>
+									<p class="part_much">所需数量：2</p>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="list_information">
+						
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300240560/"><img src="../../../../public/static/front/incad_detail/000288/images/img_16.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300240560/">
+										<p class="part_top">带垫圈内六角螺栓</p>
+									</a>
+									<p class="part_number">CBST3-8</p>
+									<p class="part_much">所需数量：2</p>
+								</div>
+							</div>
+						</div>
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300240560/"><img src="../../../../public/static/front/incad_detail/000288/images/img_16.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300240560/">
+										<p class="part_top">带垫圈内六角螺栓</p>
+									</a>
+									<p class="part_number">CBST3-12</p>
+									<p class="part_much">所需数量：6</p>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="list_information">
+						
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300240560/"><img src="../../../../public/static/front/incad_detail/000288/images/img_16.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300240560/">
+										<p class="part_top">带垫圈内六角螺栓</p>
+									</a>
+									<p class="part_number">CBST4-10</p>
+									<p class="part_much">所需数量：2</p>
+								</div>
+							</div>
+						</div>
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300240560/"><img src="../../../../public/static/front/incad_detail/000288/images/img_16.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300240560/">
+										<p class="part_top">带垫圈内六角螺栓</p>
+									</a>
+									<p class="part_number">CBST5-15</p>
+									<p class="part_much">所需数量：4</p>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="list_information">
+						
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300240560/"><img src="../../../../public/static/front/incad_detail/000288/images/img_16.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300240560/">
+										<p class="part_top">带垫圈内六角螺栓</p>
+									</a>
+									<p class="part_number">CBST5-20</p>
+									<p class="part_much">所需数量：4</p>
+								</div>
+							</div>
+						</div>
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300240560/"><img src="../../../../public/static/front/incad_detail/000288/images/img_16.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300240560/">
+										<p class="part_top">带垫圈内六角螺栓</p>
+									</a>
+									<p class="part_number">CBST6-15</p>
+									<p class="part_much">所需数量：4</p>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="list_information">
+						
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300240560/"><img src="../../../../public/static/front/incad_detail/000288/images/img_16.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300240560/">
+										<p class="part_top">带垫圈内六角螺栓</p>
+									</a>
+									<p class="part_number">CBST5-10</p>
+									<p class="part_much">所需数量：2</p>
+								</div>
+							</div>
+						</div>
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300240560/"><img src="../../../../public/static/front/incad_detail/000288/images/img_16.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300240560/">
+										<p class="part_top">带垫圈内六角螺栓</p>
+									</a>
+									<p class="part_number">CBST5-12</p>
+									<p class="part_much">所需数量：2</p>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="list_btn">
+						<div class="more_btn">
+							<p>点击显示更多零件</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="careful_iformation">
+				<p><strong>※</strong><span>装置总成CAD数据由几个分总成构成。<br/>计划采用可按分总成为单位进行留用、编辑的构成。</span></p>
+			</div>
+			<div class="down_load">
+				<a href="{:url($data.module_download_url)}000288" onclick="ga('send','event','inCADdetail','click','sheetDL');">
+					<p>查看零件表</p>
+				</a>
+			</div>
+			<div class="notice">
+			   注：更多免费的案例请在PC端查看。
+			</div>
+		</div>
+		<div class="return_top">
+			<img src="../../../../public/static/front/incad_detail/images/return_top.jpg" />
+		</div>
+	<script>
+		(function(i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r;
+			i[r] = i[r] || function() {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date();
+			a = s.createElement(o),
+				m = s.getElementsByTagName(o)[0];
+			a.async = 1;
+			a.src = g;
+			m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-6311415-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- Google Tag Manager -->
+	<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NSFBPS"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<script>
+		(function(w, d, s, l, i) {
+			w[l] = w[l] || [];
+			w[l].push({
+				'gtm.start': new Date().getTime(),
+				event: 'gtm.js'
+			});
+			var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s),
+				dl = l != 'dataLayer' ? '&l=' + l : '';
+			j.async = true;
+			j.src =
+				'//www.googletagmanager.com/gtm.js?id=' + i + dl;
+			f.parentNode.insertBefore(j, f);
+		})(window, document, 'script', 'dataLayer', 'GTM-NSFBPS');
+	</script>
+	<!-- End Google Tag Manager -->
+	<!-- Baidu Analytics -->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+			var hm = document.createElement("script");
+			hm.src = "//hm.baidu.com/hm.js?c86e2c4bb4ad01427261d9484e89bf8b";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	<!-- Baidu Analytics -->
+	<script src="../../../../public/static/front/incad_detail/000288/js/js.js"></script>

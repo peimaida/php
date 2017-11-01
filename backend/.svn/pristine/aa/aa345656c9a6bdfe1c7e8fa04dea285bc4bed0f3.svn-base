@@ -1,0 +1,15 @@
+<div class="footer">
+	<div class="foot-01">
+		<a href="#" class="left"><img src="../../../public/static/front/images/mobile-bnt.png" alt="mobile" /><span>手机版</span></a>
+		<a href="http://cn.misumi-ec.com/" class="right" onclick="ga('send','event','footer','click','PC Ver.');"><span>电脑版</span><img src="../../../public/static/front/images/PC-btn.jpg" alt="mobile" /></a>
+	</div>
+	<div class="copy-r">
+		<p class="logo"><img src="../../../public/static/front/images/top_30.png" alt="misumi" /></p>
+		<p class="copy-txt">Copyright © MISUMI Corporation All Rights Reserved.</p>
+	</div>
+
+
+</div>
+</body>
+</html>
+

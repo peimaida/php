@@ -1,0 +1,169 @@
+
+<section id="content">
+
+    <div class="page page-fullwidth-layout">
+
+        <div class="pageheader">
+
+            <h2>{$data.module_name}</h2>
+
+            <div class="page-bar">
+
+                <ul class="page-breadcrumb">
+                    <li>
+                        <a href="{:url($data.module_url)}"><i class="fa fa-user-secret"></i> {$data.module_name}</a>
+                    </li>
+                    <li>
+                        {$data.module_title}列表</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <!-- page content -->
+        <div class="pagecontent">
+
+            <!-- row -->
+            <div class="row">
+                <!-- col -->
+                <div class="col-md-12">
+
+                    <!-- tile -->
+                    <section class="tile">
+
+                        <!-- tile header -->
+                        <div class="tile-header dvd dvd-btm">
+                            <h1 class="custom-font"><strong>{$data.module_title}</strong> 列表</h1>
+                            <ul class="controls">
+                                {if $data.permission}
+                                <li><a href="{:url($data.module_url.'create')}"><i class="fa fa-plus mr-5"></i> 新增</a></li>
+                                {/if}
+                            </ul>
+                        </div>
+                        <!-- /tile header -->
+
+                        <!-- tile body -->
+                        <div class="tile-body">
+                            <!--
+                           <div class="alert alert-info" style="display:none;">显示一些提示信息</div>
+                            -->
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover table-custom" id="products-list">
+                                    <thead>
+                                        <tr>
+                                            <th>用户名</th>
+                                            <th>分机号</th>
+                                            <th>状态</th>
+                                            <th>权限</th>
+                                            <th>最后登录IP</th>
+                                            <th>最后登录时间</th>
+                                            {if $data.permission}
+                                            <th>操作</th>
+                                            {/if}
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        {if($list)}
+                                            {foreach $list as $item)}
+                                            <tr id="tr_{$item->id}">
+                                                <td>{$item->username}</td>
+                                                <td>{$item->tel}</td>
+                                                <td>{$item->status}</td>
+                                                <td>{$item->permission}</td>
+                                                <td>{$item->last_login_ip}</td>
+                                                <td>
+                                                {if $item->last_login_time}
+                                                {$item->last_login_time|date="Y-m-d H:i:s",###}
+                                                {/if}
+                                                </td>
+                                                {if $data.permission}
+                                                <td>
+                                                    <a class="btn btn-info" href="{:url($data.module_url.$item->id)}">
+                                                        <i class="glyphicon glyphicon-edit icon-white"></i>
+                                                        编辑
+                                                    </a>
+                                                    <!--
+                                                    <a class="btn btn-warning" href="javascript:;"  onclick="if(confirm('确定使管理员账号过期吗')){ updateExpireTime({$item->id})}">
+                                                        <i class="glyphicon glyphicon-time icon-white"></i>
+                                                        重置密码
+                                                    </a>
+                                                    -->
+                                                    {if $item->status==='已禁用'}
+                                                    <a class="btn btn-danger" href="javascript:;"  onclick="if(confirm('确定要删除该管理员吗')){ deleteData({$item->id})}">
+                                                        <i class="glyphicon glyphicon-trash icon-white"></i>
+                                                        删除
+                                                    </a>
+                                                    {/if}
+                                                    {if $item->status==='正常'}
+                                                    <a class="btn btn-danger" href="javascript:;"  onclick="if(confirm('确定要禁用该管理员吗')){ blockData({$item->id})}">
+                                                        <i class="glyphicon glyphicon-trash icon-white"></i>
+                                                        禁用
+                                                    </a>
+                                                    <a class="btn btn-danger" href="javascript:;"  onclick="if(confirm('确定要删除该管理员账号吗')){ deleteData({$item->id})}">
+                                                        <i class="glyphicon glyphicon-trash icon-white"></i>
+                                                        删除
+                                                    </a>
+                                                    {/if}
+                                                </td>
+                                                {/if}
+                                            </tr>
+                                            {/foreach}
+                                        {/if}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="text-center">{$list->render()}</div>
+                        </div>
+                        <!-- /tile body -->
+
+                    </section>
+                    <!-- /tile -->
+
+                </div>
+                <!-- /col -->
+            </div>
+            <!-- /row -->
+
+        </div>
+        <!-- /page content -->
+        <script type="text/javascript">
+        function deleteData(id){
+            $.ajax({
+                type:"POST",
+                url:"{:url($data.module_url.'delete')}/"+id,
+                success:function(data){
+                    if(data.error == 0){
+                        $('#tr_'+data.id).remove();
+                    }
+                    $('.alert').html(data.msg).show();
+                    setTimeout(function() {
+                        $('.alert').hide();
+                    }, 3000);
+                }
+            });
+        }
+
+        function blockData(id){
+            $.ajax({
+                type:"POST",
+                url:"{:url($data.module_url.'block')}/"+id,
+                success:function(data){
+                    if(data.error == 0){
+                        $('#tr_'+data.id).remove();
+                    }
+                    $('.alert').html(data.msg).show();
+                    setTimeout(function() {
+                        $('.alert').hide();
+                    }, 3000);
+                }
+            });
+        }
+        </script>
+
+    </div>
+
+</section>
+<!--/ CONTENT -->

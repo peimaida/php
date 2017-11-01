@@ -1,0 +1,74 @@
+	<div class="container">
+		<div class="page-title">
+			<img src="../../../../public/static/front/images/top_25.png" class="page-title-img">
+			<span class="page-title-txt">新闻详情</span>
+		</div>
+
+		<div class="banner-cont">
+			<img src="../../../../public/uploads/posts/{$item.source_image}" class="banner-pic" alt="{$item.post_title}">
+		</div>
+
+		<div class="cont-title">
+			<h2 class="title-txt">{$item.post_title}</h2>
+			<p class="sub-title">
+				<span class="title-info">
+					<img src="../../../../public/static/front/images/evt-writer.png">
+					<span>{$item.author_name}</span>
+				</span>
+				<span class="title-info">
+					<img src="../../../../public/static/front/images/evt-time.png">
+					<span>{$item.start_time|date="Y-m-d",###}</span>
+				</span>
+				{if $item.tag_id==1}
+				<span class="notice title-info">
+				{else}
+				<span class="activity title-info">
+				{/if}
+				{$item.tag_name}
+				</span>
+			</p>
+		</div>
+
+		<div class="cont-txt">
+			{$item.post_content}
+		</div>
+
+		<div class="sibling-links">
+		{if $item.last_cnt==1}
+			<a href="{:url($data.module_url)}{$item.last_id}" class="prev-link">
+				<span class="link-txt"><img src="../../../../public/static/front/images/prev-icon.png">上一篇</span>
+				<span class="link-title">{$item.last_post_title}</span>
+			</a>
+		{/if}
+		{if $item.next_cnt==1}
+			<a href="{:url($data.module_url)}{$item.next_id}" class="next-link">
+				<span class="link-txt">下一篇<img src="../../../../public/static/front/images/next-icon.png"></span>
+				<span class="link-title">{$item.next_post_title}</span>
+			</a>
+		{/if}
+		</div>
+
+		<div class="related-info">
+			<p class="related-title">
+				<img src="../../../../public/static/front/images/evt-link.png">
+				<span>相关新闻</span>
+			</p>
+			<div class="related-list">
+			{if($list)}
+			{foreach name="list" item="value"}
+			<a class="related-item" href="{:url($data.module_url.$value['id'])}"><span class="related-txt">{$value['post_title']}</span><span class="right-icon">
+			<img src="../../../../public/static/front/images/go-icon.png">
+			</span>
+			</a>
+			{/foreach}
+			{/if}
+			</div>
+		</div>
+
+		<div class="more-div">
+			<img src="../../../../public/static/front/images/evt-more.png" onclick="showMore();">
+		</div>
+
+	</div>
+
+	<script src="../../../../public/static/front/js/readMore.js"></script>

@@ -1,0 +1,59 @@
+
+<section id="content">
+
+    <div class="page page-fullwidth-layout">
+
+        <div class="pageheader">
+
+            <h2>{$data.module_name}</h2>
+
+            <div class="page-bar">
+
+                <ul class="page-breadcrumb">
+                    <li>
+                        <a href="{:url($data.module_url)}"><i class="fa fa-list"></i> {$data.module_name}</a>
+                    </li>
+                    <li>
+                        手动公开</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <!-- page content -->
+        <div class="pagecontent">
+
+            <!-- row -->
+            <div class="row">
+                <!-- col -->
+                <div class="col-md-12">
+
+                    <!-- tile -->
+                    <section class="tile">
+                    <div class="tile-body">
+                        <form name="online_form" action="/admin/maintenance/doonline" method="post">
+                            {include file="custom-fields" /}
+                            <div class="row">
+                            <div class="col-sm-12">
+                            <input type="submit" name="online_create" class="btn btn-info" value="提交">        
+                            </div>
+                            </div>
+                        </form>
+                    </div>
+                    </section>
+                    <!-- /tile -->
+
+                </div>
+                <!-- /col -->
+            </div>
+            <!-- /row -->
+
+        </div>
+        <!-- /page content -->
+
+    </div>    
+
+</section>
+<!--/ CONTENT -->

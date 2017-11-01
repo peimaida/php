@@ -1,0 +1,151 @@
+
+<section id="content">
+
+    <div class="page page-fullwidth-layout">
+
+        <div class="pageheader">
+
+            <h2>{$data.module_name}</h2>
+
+            <div class="page-bar">
+
+                <ul class="page-breadcrumb">
+                    <li>
+                        <a href="{:url($data.module_url)}"><i class="fa fa-list"></i> {$data.module_name}</a>
+                    </li>
+                    <li>
+                        维护模式</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <!-- page content -->
+        <div class="pagecontent">
+
+            <!-- row -->
+            <div class="row">
+                <!-- col -->
+                <div class="col-md-12">
+
+                    <!-- tile -->
+                    <section class="tile">
+                        <div class="tile-body">
+                            <form name="maintenance_form" action="/admin/maintenance/doupdate" method="post">
+                                {include file="custom-fields" /}
+                                <div class="row">
+                                    <div class="col-sm-2">        
+                                        <input type="submit" class="btn btn-info" id="maintenance" value="{if $data['maintenance']==1}关闭维护模式{else}开启维护模式{/if}" onclick="update_maintenance()">
+                                        <input type="hidden" name="maintenance" value="{if $data['maintenance']==1}0{else}1{/if}">
+                                        <input type="hidden" name="hide_start_time" value="">
+                                        <input type="hidden" name="hide_end_time" value="">
+                                    </div> 
+                                    <div class="col-sm-4" style="padding: 6px 15px;">当前维护状态：{if $data['maintenance']==1}开启{else}关闭{/if}
+                                    </div>
+                                </div>
+                                <div class="row">                                    
+                                    {if $data['maintenance']==1}
+                                    <div class="col-sm-12" style="padding-top: 6px">维护时间：{$data['start_time']|date="Y-m-d H:i:s",###}  ~  {$data['end_time']|date="Y-m-d H:i:s",###}
+                                    </div>
+                                    {/if}  
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                    <!-- /tile -->
+
+                </div>
+                <!-- /col -->
+            </div>
+            <!-- /row -->
+
+        </div>
+        <!-- /page content -->
+
+    </div>
+
+</section>
+<!--/ CONTENT -->
+
+<script type="text/javascript">
+$(function () {
+    $("input[name='start_time']").datetimepicker({
+        format:"YYYY-MM-DD HH:mm:ss",
+    }).on("dp.change", function (e) {
+        $("input.datepicker[name='end_time']").data("DateTimePicker").minDate(e.date);
+    });
+    $("input[name='end_time']").datetimepicker({
+        format:"YYYY-MM-DD HH:mm:ss",
+        useCurrent:false
+    }).on("dp.change", function (e) {
+        $("input.datepicker[name='start_time']").data("DateTimePicker").maxDate(e.date);
+    })
+});
+
+    function update_maintenance(){
+        var maintenance_val = document.getElementById("maintenance").value; 
+        var start_time = document.getElementsByName('start_time');
+        var end_time = document.getElementsByName('end_time');
+        var maintenance = document.getElementsByName('maintenance');
+        
+        if(maintenance[0].value=='1'){
+            if(start_time[0].value == "" || end_time[0].value == ""){
+                alert("开始时间及结束时间不能为空！");
+            } else{
+                if(start_time[0].value==end_time[0].value){
+                alert('开始时间不能与结束时间一样！');
+                }else if(start_time[0].value>end_time[0].value){
+                    alert('开始时间不能晚于结束时间！');
+                }else{
+                    maintenance_form.maintenance.value=maintenance_val; 
+                    maintenance_form.hide_start_time.value=start_time[0].value;
+                    maintenance_form.hide_end_time.value=end_time[0].value;
+                }
+            }
+            // $('form').bootstrapValidator({
+            //     message: 'This value is not valid',
+            //     feedbackIcons: {
+            //         valid: 'glyphicon glyphicon-ok',
+            //         invalid: 'glyphicon glyphicon-remove',
+            //         validating: 'glyphicon glyphicon-refresh'
+            //     },
+            //     fields: {
+            //         start_time: {
+            //             validators: {
+            //                 callback: {
+            //                     message: '系统维护开始时间不能为空',
+            //                     callback:function(value, validator,$field){
+            //                         var begin = $("input.datepicker[name='start_time']").val();
+            //                         return begin != "";
+            //                     }
+            //                 }
+            //             }
+            //         },
+        
+            //         end_time: {
+            //             validators: {
+            //                 callback: {
+            //                     message: '系统维护结束时间不能为空',
+            //                     callback:function(value, validator,$field){
+            //                         var end = $("input.datepicker[name='end_time']").val();
+            //                         return end != "";
+            //                     }
+            //                 }
+            //             }
+            //         }                
+            //     }
+            // });
+            // maintenance_form.maintenance.value=maintenance_val; 
+            // maintenance_form.hide_start_time.value=start_time[0].value;
+            // maintenance_form.hide_end_time.value=end_time[0].value;
+        }else{
+            maintenance_form.maintenance.value=maintenance_val; 
+        }
+    }
+
+
+</script>
+
+<!-- <script src="../../../../public/static/back/js/maintenance.js"></script> -->

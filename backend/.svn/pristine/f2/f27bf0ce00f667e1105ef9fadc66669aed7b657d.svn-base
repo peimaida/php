@@ -1,0 +1,200 @@
+
+<section id="content">
+
+    <div class="page page-fullwidth-layout">
+
+        <div class="pageheader">
+
+            <h2>{$data.module_name}</h2>
+
+            <div class="page-bar">
+
+                <ul class="page-breadcrumb">
+                    <li>
+                        <a href="{:url($data.module_url)}search/1"><i class="fa fa-list"></i> {$data.module_name}</a>
+                    </li>
+                    <li>
+                        {$data.module_title}列表</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <!-- page content -->
+        <div class="pagecontent">
+             <!-- search-box -->
+            <div class="row">
+                <!-- col -->
+                <div class="col-md-12">
+
+                    <!-- tile -->
+                    <section class="tile">
+                        <!-- tile header -->
+                        <div class="tile-header dvd dvd-btm">
+                            <h1 class="custom-font"><strong>{$data.module_title}</strong> 搜索</h1>
+                        </div>
+                        <!-- /tile header -->
+
+                        <!-- tile body -->
+                        <div class="tile-body">
+
+                            <form role="form" enctype="multipart/form-data" action="{:url($data.module_url)}search/1" method="GET">
+                                <div class="row">
+                                    <div class="col-sm-4"><input class="form-control" name="title" value="{if (isset($data['search']) AND isset($data['search']['title']) )}{$data['search']['title']}{/if}" placeholder="图片名称"></div>
+                                    <div class="col-sm-2"><input class="form-control datepicker" data-format="YYYY-MM-DD" name="banner_start_time" value="{if (isset($data['search']) AND isset($data['search']['banner_start_time']) )}{$data['search']['banner_start_time']}{/if}" placeholder="Banner公开时间"></div>
+                                    <div class="col-sm-1" style="text-align: center;line-height: 34px;font-size: 20px;padding: 0;width: 20px;">~</div>
+                                    <div class="col-sm-2"><input class="form-control datepicker" data-format="YYYY-MM-DD" name="banner_end_time" value="{if (isset($data['search']) AND isset($data['search']['banner_end_time']) )}{$data['search']['banner_end_time']}{/if}" placeholder="Banner结束时间"></div>
+                                     <div class="col-sm-3"><input class="form-control datepicker" data-format="YYYY-MM-DD" name="create_time" value="{if (isset($data['search']) AND isset($data['search']['create_time']) )}{$data['search']['create_time']}{/if}" placeholder="Banner创建日期"></div>
+                                    
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4" style="margin-top: 10px;"><button class="btn btn-info" type="submit">搜索</button><a class="btn btn-danger" href="/admin/banners/search/1" style="margin-left: 10px;">清空条件</a></div>                           
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <!-- end search-box -->
+
+            <!-- row -->
+            <div class="row">
+                <!-- col -->
+                <div class="col-md-12">
+
+                    <!-- tile -->
+                    <section class="tile">
+
+                        <!-- tile header -->
+                        <div class="tile-header dvd dvd-btm">
+                            <h1 class="custom-font"><strong>{$data.module_title}</strong> 列表</h1>
+                            <ul class="controls">
+                                <li><a href="{:url($data.module_url.'create')}"><i class="fa fa-plus mr-5"></i> 新增</a></li>
+                            </ul>
+                        </div>
+                        <!-- /tile header -->
+
+                        <!-- tile body -->
+                        <div class="tile-body">
+                           <!--<div class="alert alert-info" style="display:none;">显示一些提示信息</div>-->
+
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover table-custom" id="products-list">
+                                    <thead>
+                                        <tr>
+                                            <th>图片名称</th>
+                                            <th>编辑状态</th>
+                                            <th>页面显示状态</th>
+                                            <th>缩略图</th>
+                                            <th>Banner公开时间</th>
+                                            <th>Banner结束时间</th>
+                                            <th>创建时间</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        {if($list)}
+                                            {foreach $list as $item)}
+                                            <tr id="tr_{$item['id']}">
+                                                <td>{$item['banner_title']}</td>
+                                                <td>{if $item['status']}已公开{else}未公开{/if}</td>
+                                                <td>{if $item['show_flag']}已显示{else}未显示{/if}</td>
+                                                <td style="width:15%;"><img src="../../../../public/uploads/banners/{$item['source_image']}" style="width:100%;"/></td>
+                                                <td>{if $item['start_time']}{$item['start_time']|date="Y-m-d",###}{else}-{/if}</td>
+                                                <td>{if $item['end_time']}{$item['end_time']|date="Y-m-d",###}{else}-{/if}</td>
+                                                <td>{$item['create_time']|date="Y-m-d",###}</td>
+                                                <td>
+                                                {if $item['status']!=='已删除'}
+                                                    <a class="btn btn-danger" href="javascript:;"  onclick="if(confirm('确定要删除该banner吗')){ deleteData({$item['id']})}">
+                                                        <i class="glyphicon glyphicon-trash icon-white"></i>
+                                                        删除
+                                                    </a>
+                                                    {/if}
+                                                </td>
+                                            </tr>
+                                            {/foreach}
+                                        {/if}
+                                    </tbody>
+                                </table>
+                            </div>
+                            {if $total_num>1}
+                            <div class="text-center">
+                                <ul class="pagination">
+                                    {if $prev_link==1}
+                                    <li>
+                                    {if $query.flag==1}
+                                    <a href="/admin/banners/search/{$cur_page-1}?title={$query.title}&create_time={$query.create_time}&banner_start_time={$query.banner_start_time}&banner_end_time={$query.banner_end_time}" >上一页</a>
+                                    {else}
+                                    <a href="/admin/banners/search/{$cur_page-1}" >上一页</a>
+                                    {/if}
+                                    </li>
+                                    {else}
+                                    <li>
+                                    <a disabled="true" href="javascript:void();" >上一页</a>
+                                    </li>
+                                    {/if}
+                                    {for start="1" end="$page_num+1"}
+                                    <li>
+                                    {if $query.flag==1}
+                                    <a href="/admin/banners/search/{$i}?title={$query.title}&create_time={$query.create_time}&banner_start_time={$query.banner_start_time}&banner_end_time={$query.banner_end_time}">
+                                    {else}
+                                    <a href="/admin/banners/search/{$i}">
+                                    {/if}
+                                    {$i}
+                                    </a>
+                                    </li>
+                                    {/for}
+                                    {if $next_link==1}
+                                    <li>
+                                    {if $query.flag==1}
+                                    <a href="/admin/banners/search/{$cur_page+1}?title={$query.title}&create_time={$query.create_time}&banner_start_time={$query.banner_start_time}&banner_end_time={$query.banner_end_time}" >下一页</a>
+                                    {else}
+                                    <a href="/admin/banners/search/{$cur_page+1}" >下一页</a>
+                                    {/if}
+                                    </li>
+                                    {else}
+                                    <li>
+                                    <a disabled="true" href="javascript:void();" >下一页</a>
+                                    </li>
+                                    {/if}
+                                </ul>
+                            </div>
+                            {/if}
+                        </div>
+                        <!-- /tile body -->
+
+                    </section>
+                    <!-- /tile -->
+
+                </div>
+                <!-- /col -->
+            </div>
+            <!-- /row -->
+
+        </div>
+        <!-- /page content -->
+        <script type="text/javascript">
+        function deleteData(id){
+            $.ajax({
+                type:"POST",
+                url:"{:url($data.module_url.'delete')}/"+id,
+                success:function(data){
+                    if(data.error == 0){
+                        $('#tr_'+data.id).remove();
+                    }
+                    $('.alert').html(data.msg).show();
+                    setTimeout(function() {
+                        $('.alert').hide();
+                    }, 3000);
+                }
+            });
+        }
+        </script>
+
+    </div>
+
+</section>
+<!--/ CONTENT -->

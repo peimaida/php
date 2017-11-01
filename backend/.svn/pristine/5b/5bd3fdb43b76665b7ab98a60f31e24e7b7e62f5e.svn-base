@@ -1,0 +1,60 @@
+.container .rebu {
+	width: 100%;
+	height: 6rem;
+	position: relative;
+	background: url(../images/error/rebuid-img-2.png) no-repeat;
+	background-size: 100% auto;
+}
+
+.container .rebu> h2 {
+	display: block;
+	height: 6rem;
+	width: 42.666%;
+	margin: 0 auto;
+}
+
+.container .rebu> h2> img {
+	display: inline-block;
+	width: 100%;
+	vertical-align: bottom;
+}
+
+.container .rebu> h2:before {
+	content: '';
+	width: 0;
+	height: 100%;
+	display: inline-block;
+	vertical-align: bottom;
+}
+
+.container .content-show {
+	padding: 2.5rem 0;
+	width: 87.3%;
+	margin: 0 auto;
+}
+
+.container .content-show> h4 {
+	font-size: 1.5rem;
+	text-align: left;
+	font-weight: 900;
+	padding-bottom: 1rem;
+}
+
+.container .content-show> p {
+	font-size: 1.5rem;
+	font-weight: 500;
+	line-height: 2.1rem;
+	color: #333;
+}
+
+.container .conten-img {
+	width: 66.1333%;
+	margin: 0 auto;
+}
+
+.container .conten-img> img {
+	width: 100%;
+}
+
+
+/*# sourceMappingURL=page-style.css.map */

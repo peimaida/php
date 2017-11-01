@@ -1,0 +1,24 @@
+<div class="container category">
+	<div class="page-title">
+		<img src="../../../../public/static/front/images/top_09.png" class="page-title-img">
+		<span class="page-title-txt">商品分类</span>
+	</div>
+	<div class="top-container">
+		<div class="cate-tops">
+			<ul class="cate-top6"></ul>
+			<ul class="cate-top12"></ul>
+		</div>
+		<div class="points">
+			<span class="left"></span>
+			<span class="right"></span>
+		</div>
+	</div>
+	
+	<div class="line-block"></div>
+	<div class="cate-list">
+		<div class="list-title"></div>
+		<div class="list-content"></div>
+	</div>
+</div>
+
+<script type="text/javascript" src="__FRONT_PUBLIC__/js/category.js"></script>

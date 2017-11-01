@@ -1,0 +1,23 @@
+<?php
+//配置文件
+return [
+	'object_name' => 'Misumi Mobile Site',
+	'template'  =>  [
+	    'layout_on'     =>  true,
+	    'layout_name'   =>  'layout',
+	],
+	'tags'  =>  [//设置活动标签
+	    '1'	=> '通知',
+	    '2' => '公告',
+	],
+	'top_event_num'=>3,//首页活动列表最多展示数量
+	'top_post_num'=>2,//首页新闻列表最多展示数量
+	'top_banner_num'=>3,//首页banner列表最多展示数量
+	'detail_event_num'=>4,//活动详情页相关活动最多展示数量
+	'detail_post_num'=>4,//新闻详情页相关新闻最多展示数量
+	//报错页面配置
+    'http_exception_template'    =>  [
+    // 定义404错误的重定向页面地址
+    404 =>  APP_PATH.'404.html',
+    ],
+];

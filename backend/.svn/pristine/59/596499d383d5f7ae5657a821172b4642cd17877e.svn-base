@@ -1,0 +1,109 @@
+<?php
+/*
+ * @基于TP5框架开发
+ * @Misumi Mobile Site_维护页面控制器
+ * @Created by MD.Pei
+*/
+namespace app\admin\controller;
+use app\admin\model\Maintenance;
+use app\admin\model\Administrator;
+use app\admin\controller\AdminAuth;
+use think\Request;
+use think\Db;
+
+class MaintenanceController extends AdminAuth{
+	//模块基本信息
+	private $data = array(
+		'module_name' => '系统设置',
+        'module_url'  => '/admin/maintenance/',
+		'module_slug' => 'administrator',
+	);
+
+	public function index(){
+		$this->data['edit_fields'] = array(
+			'start_time'    => array('type' => 'text', 'label' => '系统维护开始时间','class'=>'datepicker','extra'=>array('data'=>array('format'=>'YYYY-MM-DD hh:mm:ss'),'wrapper'=>'col-sm-3')),
+			'end_time'    => array('type' => 'text', 'label' => '系统维护结束时间','class'=>'datepicker','extra'=>array('data'=>array('format'=>'YYYY-MM-DD hh:mm:ss'),'wrapper'=>'col-sm-3')),
+		);
+        //查询维护模式关闭状态
+        $sql = "select * from backend_maintenance where status = 1 and useless = 0";
+        $list = Db::query($sql);
+        $num = count($list);
+        $this->data['maintenance'] = $num;
+		$this->data['permission'] = parent::admin_permission();
+		if($num==1){
+			$this->data['start_time'] = $list[0]['start_time'];
+			$this->data['end_time'] = $list[0]['end_time']; 
+		}
+        $this->assign('data',$this->data);
+        return $this->fetch();
+	}
+
+	public function doupdate(){
+		if(!empty($_POST['hide_start_time']) && !empty($_POST['hide_end_time'])){
+			$start_time = strtotime($_POST['hide_start_time']);
+			$end_time = strtotime($_POST['hide_end_time']);
+		}else{
+			$start_time = 0;
+			$end_time = 0;
+		}
+		$user = new Administrator;
+		if(session('uid')){
+			$where_query = array(
+            	'username' => session('admin_username'),
+            	'password' => session('admin_password'),
+        	);
+			$user = $user->where($where_query)->find();
+		}
+		$update_admin_id = $user->id;
+		$num = Maintenance::where('status','>=',0)->count();
+        $update_sql = "update backend_maintenance set useless = 1, update_admin_id = ".$update_admin_id.", update_time = ".time();
+        $insert_sql = "insert into backend_maintenance (create_admin_id,update_admin_id,status,useless,create_time,update_time,start_time,end_time) values (".$update_admin_id.','.$update_admin_id.','.$_POST['maintenance'].',0,'.time().','.time().','.$start_time.','.$end_time.")";
+
+        if(($_POST['maintenance']==1 && ($_POST['hide_start_time']<$_POST['hide_end_time'])) || $_POST['maintenance']==0){
+			Db::startTrans();
+			try{
+				if($num>0){
+    				$result_update = Db::execute($update_sql);
+    			}
+    			$result_insert = Db::execute($insert_sql);
+    			Db::commit();
+			} catch (\Exception $e) {
+	    		Db::rollback();
+			}
+		}
+		$this->redirect('/admin/maintenance');
+	}
+
+	public function online(){
+		$this->data['permission'] = parent::admin_permission();
+		$this->data['edit_fields'] = array(
+			'status'         => array('type' => 'radio', 'label' => '是否立即手动公开?','default'=> array(0 => '否', 1 => '是')),
+		);
+		$item['status']  = '否';
+		$this->assign('item',$item);
+        $this->assign('data',$this->data);
+        return view();
+	}
+
+	public function doonline(){
+		$user = new Administrator;
+		if(session('uid')){
+			$where_query = array(
+            	'username' => session('admin_username'),
+            	'password' => session('admin_password'),
+        	);
+			$user = $user->where($where_query)->find();
+		}
+		$data['admin_id'] = $user->id;
+		$data['create_time'] = time();
+		if(!empty($_POST['status']) && $_POST['status']==1){
+			$result = Db::table('backend_online')->insert($data);
+			if($result==1){
+				action('/admin/crontab/update');
+				$this->redirect('/admin/maintenance/online');
+			}
+		}else{
+			$this->redirect('/admin/maintenance/online');
+		}
+	}
+}

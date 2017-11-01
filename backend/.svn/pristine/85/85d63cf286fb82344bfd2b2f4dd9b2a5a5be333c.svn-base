@@ -1,0 +1,17 @@
+.container .show-content {
+  width: 100%;
+  background: #f4f4f4; 
+}
+.container .show-content > dl {
+  width: 100%;
+  padding-bottom: 1.25rem; 
+}
+.container .show-content > dl > a {
+  display: block; 
+}
+.container .show-content > dl > a > img {
+  width: 100%;
+  display: block; 
+}
+
+/*# sourceMappingURL=pageStyle.css.map */

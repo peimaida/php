@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<title>{$data.module_name}</title>
+<meta name="description" content="{$data.module_description}">
+<meta name="keywords" content="{$data.module_keywords}">
+{$data.module_js}
+{$data.module_css}
+</head>
+<body>
+
+  <header>
+    <div class="menu">
+     <div class="left">
+       <a href="/" target="_self">
+         <img src="__FRONT_PUBLIC__/images/logo.png" alt="misumi">
+       </a>
+     </div>
+     <div class="center_item">
+       <a href="https://cn.misumi-ec.com/mydesk2/s/login" target="_self">
+         <img src="__FRONT_PUBLIC__/images/icon1.png" alt="login" />
+       </a>
+     </div>
+     <div class="right">
+       <a href="javascript:;" class="contact" target="_self">
+         <img src="__FRONT_PUBLIC__/images/top_01.png" alt="menu">
+       </a>
+     </div>
+    </div>
+    <div class="input">
+     <div class="search">
+         <span class="search_icon"><img src="__FRONT_PUBLIC__/images/icon2.png" alt="search_icon" /></span>
+         <input class="input_s" autocomplete="off" type="search" placeholder="请输入关键字">
+     </div>
+     <input class="button" value="搜索" type="button" onclick="searchLink()">
+    </div>
+  </header>
+
+<!-- menu-list -->
+<div class="slide-contact">
+<aside class="slide-wrapper">
+   <div>
+     <ul>
+       <li class="slide-1st">
+         <a href="/" target="_self">
+           <img src="__FRONT_PUBLIC__/images/Guide/guide_01.png" alt="misumi" />
+         </a>
+       </li>
+       <li class="slide-list">
+	     <a href="/" target="_self" class="list-left">
+             <img src="__FRONT_PUBLIC__/images/Guide/guide_02.png" alt="home" />
+             <span>首页</span>
+             <span class="list-right">></span>
+       </a>
+       </li>
+       <li class="slide-list">
+	     <a href="/category" target="_self" class="list-left" onclick="setSession(1)">
+             <img src="__FRONT_PUBLIC__/images/Guide/guide_03.png" alt="home" />
+             <span>商品分类</span>
+             <span class="list-right">></span>
+       </a>
+       </li>
+       <li class="slide-list">
+	     <a href="/topic" target="_self" class="list-left">
+             <img src="__FRONT_PUBLIC__/images/Guide/guide_05.png" alt="home" />
+             <span>活动特辑</span>
+             <span class="list-right">></span>
+       </a>
+       </li>
+       <li class="slide-list">
+	     <a href="/news" target="_self" class="list-left">
+             <img src="__FRONT_PUBLIC__/images/Guide/guide_04.png" alt="home" />
+             <span>新闻中心</span>
+             <span class="list-right">></span>
+       </a>
+       </li>
+       <li class="slide-list">
+	     <a href="/incad" target="_self" class="list-left">
+             <img src="__FRONT_PUBLIC__/images/Guide/guide_06.png" alt="home" />
+             <span>案例库</span>
+             <span class="list-right">></span>
+       </a>
+       </li>
+       <li class="slide-list">
+	     <a href="https://www.misumi-ec.com/cn/product/MN001ProductCheckCmd.do" target="_self" class="list-left">
+             <img src="__FRONT_PUBLIC__/images/Guide/guide_07.png" alt="home" />
+             <span>型号确认</span>
+             <span class="list-right">></span>
+       </a>
+       </li>
+       <li class="slide-list">
+	     <a href="/follow" target="_self" class="list-left">
+             <img src="__FRONT_PUBLIC__/images/Guide/guide_08.png" alt="home" />
+             <span>关注我们</span>
+             <span class="list-right">></span>
+       </a>
+       </li>
+       <li class="slide-list">
+           <a href="/contact" target="_self" class="list-left">
+             <img src="__FRONT_PUBLIC__/images/icon3.png" alt="contact" />
+             <span>联系我们</span>
+             <span class="list-right">></span>
+           </a>
+       </li>
+     </ul>
+   </div>
+</aside>
+</div>
+<!-- menu-list -->
+
+<script type="text/javascript" src="__FRONT_PUBLIC__/js/headerJs.js"></script>

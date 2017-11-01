@@ -1,0 +1,84 @@
+<div class="container incadList">
+<div class="page-title"><img
+	src="../../../../public/static/front/images/top_28.png"
+	class="page-title-img"> <span class="page-title-txt">inCAD
+Library案例库</span></div>
+
+<section class="banner"> <img
+	src="../../../../public/static/front/images/incadList/banner.png"
+	alt="米思米案例库" /> </section> <!--banner--> <section class="floor-2 floor-6">
+<div class="bgclass"><img
+	src="../../../../public/static/front/images/incadList/floor-6-1.png"
+	alt="免费案例抢先看" /></div>
+<div class="shop-content">
+<ul>
+	<li><a
+		onclick="_hmt.push(['_trackEvent', 'style', 'click', 'coupon'])"
+		href="{:url($data.module_url)}000288"><img
+		src="../../../../public/static/front/images/incadList/floor-6-2.png"
+		alt="No.000288 使用了连杆的挡块机构" /></a></li>
+	<li><a
+		onclick="_hmt.push(['_trackEvent', 'style', 'click', 'coupon'])"
+		href="{:url($data.module_url)}000223"><img
+		src="../../../../public/static/front/images/incadList/floor-6-3.png"
+		alt="No.000223 气缸层叠机构" /></a></li>
+	<li><a
+		onclick="_hmt.push(['_trackEvent', 'style', 'click', 'coupon'])"
+		href="{:url($data.module_url)}000016"><img
+		src="../../../../public/static/front/images/incadList/floor-6-4.png"
+		alt="No.000016 导通检查夹具" /></a></li>
+	<li><a
+		onclick="_hmt.push(['_trackEvent', 'style', 'click', 'coupon'])"
+		href="http://cn.misumi-ec.com/asia/incadlibrary/detail/000462.html"><img
+		src="../../../../public/static/front/images/incadList/floor-6-5.png"
+		alt="No.000462 装置内部零件位置调整" /></a></li>
+</ul>
+<p class="shop-tips">注：更多免费的案例请在PC端查看</p>
+</div>
+</section> <!--2--> <section class="floor-2">
+<div class="bgclass"><img
+	src="../../../../public/static/front/images/incadList/floor-2-1.png"
+	alt="backImg" /></div>
+<div class="video-content"><img
+	src="../../../../public/static/front/images/incadList/floor-2-2.gif"
+	alt="13D组件图简单直观" />
+<p>500多种组件图，<span>3D展现简单直观</span>，满足不同人群的创意需求。</p>
+</div>
+</section> <!--../2--> <!--2.5--> <section class="floor-2 floor-3">
+<div class="bgclass"><img
+	src="../../../../public/static/front/images/incadList/floor-2-1-1.png"
+	alt="backImg" /></div>
+<div class="video-content"><img
+	src="../../../../public/static/front/images/incadList/floor-2-2-2.gif"
+	alt="零部件介绍详细" />
+<p>组件所需零部件介绍面面俱到，可谓是您选购时的<br />
+<span>最全指南</span>。</p>
+</div>
+</section> <!--../2.5--> <!--3--> <section class="floor-2 floor-3">
+<div class="bgclass"><img
+	src="../../../../public/static/front/images/incadList/floor-3-1.png"
+	alt="backImg" /></div>
+<div class="video-content"><img
+	src="../../../../public/static/front/images/incadList/floor-3-2.gif"
+	alt="组装产品技术一目了然" />
+<p>选用零件计算过程<span>一目了然</span>，选型变得如此方便！</p>
+</div>
+</section> <!--../3--> <!--4--> <section class="floor-2 floor-3">
+<div class="bgclass"><img
+	src="../../../../public/static/front/images/incadList/floor-4-1.png"
+	alt="backImg" /></div>
+<div class="video-content"><img
+	src="../../../../public/static/front/images/incadList/floor-4-2.gif"
+	alt="案例动画直观易懂" />
+<p>使用例的<span>运作3D动画</span>任性看，不用再伤精费神从零空想啦~</p>
+</div>
+</section> <!--../4--> <!--5--> <section class="floor-2 floor-3 floor-5">
+<div class="bgclass"><img
+	src="../../../../public/static/front/images/incadList/floor-5-1.png"
+	alt="backImg" /></div>
+<div class="video-content"><img
+	src="../../../../public/static/front/images/incadList/floor-5-2.png"
+	alt="零部件列表即时下载" />
+<p style="text-align: center; padding-top: 1rem">一键下载所有零部件列表。</p>
+</div>
+</section> <!--../5--></div>

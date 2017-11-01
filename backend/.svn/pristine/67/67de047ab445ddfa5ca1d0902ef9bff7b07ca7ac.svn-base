@@ -1,0 +1,64 @@
+	<div class="container">
+		<h1 class="page-title">
+			<img src="../../../../public/static/front/images/top_23.png" alt="活动详情" class="page-title-img">
+			<span class="page-title-txt">活动详情</span>
+		</h1>
+
+		<div class="banner-cont">
+			<img src="../../../../public/uploads/events/{$item.source_image}" class="banner-pic" alt="{$item.event_title}">
+		</div>
+
+		<div class="cont-title">
+			<h2 class="title-txt">{$item.event_title}</h2>
+			<p class="sub-title">
+				<span class="title-info">
+					<img src="../../../../public/static/front/images/evt-writer.png">
+					<span>{$item.author_name}</span>
+				</span>
+				<span class="title-info">
+					<img src="../../../../public/static/front/images/evt-time.png">
+					<span>{$item.start_time|date="Y-m-d",###}</span>
+				</span>
+			</p>
+		</div>
+
+		<div class="cont-txt">
+			{$item.event_content}
+		</div>
+
+		<div class="sibling-links">
+		{if $item.last_cnt==1}
+			<a href="{:url($data.module_url)}{$item.last_id}" class="prev-link">
+				<span class="link-txt"><img src="../../../../public/static/front/images/prev-icon.png">上一篇</span>
+				<span class="link-title">{$item.last_event_title}</span>
+			</a>
+		{/if}
+		{if $item.next_cnt==1}
+			<a href="{:url($data.module_url)}{$item.next_id}" class="next-link">
+				<span class="link-txt">下一篇<img src="../../../../public/static/front/images/next-icon.png"></span>
+				<span class="link-title">{$item.next_event_title}</span>
+			</a>
+		{/if}
+		</div>
+
+		<div class="related-info">
+			<p class="related-title">
+				<img src="../../../../public/static/front/images/evt-link.png">
+				<span>其他活动</span>
+			</p>
+			<div class="related-list">
+			{if($list)}
+			{foreach name="list" item="value"}
+			<a class="related-item" href="{:url($data.module_url.$value['id'])}"><span class="related-txt">{$value['event_title']}</span><span class="right-icon"><img src="../../../../public/static/front/images/go-icon.png"></span></a>
+			{/foreach}
+			{/if}
+			</div>
+		</div>
+
+		<div class="more-div">
+			<img src="../../../../public/static/front/images/evt-more.png" onclick="showMore();">
+		</div>
+
+	</div>
+
+	<script src="../../../../public/static/front/js/readMore.js"></script>

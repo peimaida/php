@@ -1,0 +1,508 @@
+<?php
+/*
+ * @基于TP5框架开发
+ * @Misumi Mobile Site_活动控制器
+ * @Created by MD.Pei
+*/
+namespace app\admin\controller;
+use app\admin\model\Administrator as AdministratorModel;
+use app\admin\model\Author;
+use app\admin\model\Tags;
+use app\admin\model\Events;
+use app\admin\controller\AdminAuth;
+use think\Validate;
+use think\Image;
+use think\Request;
+use think\Db;
+
+class EventsController extends AdminAuth{
+	//模块基本信息
+	private $data = array(
+        'image_delete_flag' => 0,
+		'module_name' => '活动管理',
+        'module_title' => '活动',
+		'module_url'  => '/admin/events/',
+		'module_slug' => 'events',
+		'upload_path' => UPLOAD_PATH,
+		'upload_url'  => '/public/uploads/',
+        'ckeditor'    => array(
+            'id'     => 'ckeditor_post_content',
+            'config' => array(
+                'width'  => "100%",
+                'height' => '400px',
+                'toolbar'   =>  array(
+                    array('Save','NewPage','DocProps','Preview','Templates'),
+                    array('Cut','Copy','Paste','-','Undo','Redo','-','Link','Unlink'),
+                    array('Bold','Italic','Underline','Strike','Subscript','Superscript','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','RemoveFormat'),
+                    array('Styles','Format','Font','FontSize'),
+                    array('TextColor','BGColor'),
+                )
+            )
+        ),
+	);
+
+    //读取活动列表
+    public function search($id=''){
+        $this->data['permission'] = parent::admin_permission();
+        $request = request();
+        $param = $request->param();
+        $sql ='select * from backend_events where status >= -1';
+
+        if(!empty($param)){
+            $this->data['search'] = $param;
+            //搜索标题
+            if(!empty($param['title'])){
+                $sql .= ' and event_title like "%'.$param['title'].'%"';
+            }
+            //搜索活动创建时间
+            if(!empty($param['create_time'])){
+                $sql .= ' and create_time between '.strtotime($param['create_time']).' and '.strtotime($param['create_time']." +1 day");
+            }
+            //搜索活动更新时间
+            if(!empty($param['update_time'])){
+                $sql .= ' and update_time between '.strtotime($param['update_time']).' and '.strtotime($param['update_time']." +1 day");
+            }
+            //搜索活动开始和结束时间
+            if(!empty($param['event_start_time']) || !empty($param['event_end_time'])){
+                if(!empty($param['event_start_time']) && !empty($param['event_end_time'])){
+                    $tmp_start_date = date("Y-m-d",strtotime($param['event_start_time']." -1 day"));
+                    $tmp_end_date = date("Y-m-d",strtotime($param['event_end_time']." +1 day"));
+                    $tmp1 = date("Y-m-d",strtotime($param['event_start_time']));
+                    $tmp2 = date("Y-m-d",strtotime($param['event_end_time']));
+                    $sql .= ' and (start_time > '.strtotime($tmp_start_date).' and end_time < '.strtotime($tmp_end_date).' or (start_time <= '.strtotime($tmp1).' and end_time between '.strtotime($tmp1).' and '.strtotime($tmp_end_date).') or (start_time between '.strtotime($tmp1).' and '.strtotime($tmp2).' and end_time >= '.strtotime($tmp2).') or (start_time <= '.strtotime($tmp1).' and end_time >= '.strtotime($tmp2).'))';
+                }
+                if(!empty($param['event_start_time']) && empty($param['event_end_time'])){
+                    $tmp3 = strtotime(date("Y-m-d",strtotime($param['event_start_time']." -1 day")));
+                    $sql .= ' and end_time > '.$tmp3;
+                }
+                if(empty($param['event_start_time']) && !empty($param['event_end_time'])){
+                    $tmp4 = strtotime(date("Y-m-d",strtotime($param['event_end_time']." +1 day")));
+                    $sql .= ' and start_time < '.$tmp4;
+                }
+            }
+        }
+        $sql_total = $sql.' order by create_time desc';
+        $list_total = Db::query($sql_total);
+        //总条数
+        $total_num = count($list_total);
+        //页码数
+        if($total_num>=config('per_page')){
+            $page_num = ceil($total_num/config('per_page'));
+        }else{
+            $page_num = 1;
+        }
+        //前一页后一页
+        if($id==1){
+            $prev_link = 0;
+        }else{
+            $prev_link = 1;
+        }
+        if($id==$page_num){
+            $next_link = 0;
+        }else{
+            $next_link = 1;
+        }
+
+        $sql .= ' order by create_time desc limit '.(config('per_page')*$id-10).','.config('per_page');
+        $list = Db::query($sql);
+
+        if(!empty($param['title']) || !empty($param['create_time']) || !empty($param['update_time']) || !empty($param['event_start_time']) || !empty($param['event_end_time'])){
+            $query['title'] = $param['title'];
+            $query['create_time'] = $param['create_time'];
+            $query['update_time'] = $param['update_time'];
+            $query['event_start_time'] = $param['event_start_time'];
+            $query['event_end_time'] = $param['event_end_time'];
+            $query['flag'] = 1;
+            $this->assign('query',$query);
+        }else{
+            $query['flag'] = 0;
+            $this->assign('query',$query);
+        }
+
+        $this->assign('cur_page',$id);
+        $this->assign('prev_link',$prev_link);
+        $this->assign('next_link',$next_link);
+        $this->assign('total_num',$total_num);
+        $this->assign('page_num',$page_num);
+        $this->assign('data',$this->data);
+        $this->assign('list',$list);
+        return $this->fetch();
+    }
+
+    //打开新增活动页面
+    public function create()
+    {
+        $this->data['permission'] = parent::admin_permission();
+        //获取当前作者名
+        $author = Author::where('status',1)->column('author','id');
+        
+        $this->data['edit_fields'] = array(
+            'event_title'     => array('type' => 'text', 'label' => '标题','notes'=>'请控制字数在16字以内'),
+            'title_image'  => array('type' => 'file','label' => '首页封面图片', 'id'=>'title_image'),
+            'feature_image'  => array('type' => 'file','label' => '详情页面图片', 'id'=>'feature_image'),
+            'event_content'   => array('type' => 'textarea', 'label' => '内容','id'=>'ckeditor_post_content'),
+            'event_author'   => array('type' => 'text', 'label' => '作者', 'disabled'=>'true', 'extra'=>array('wrapper'=>'col-sm-3')),
+            'start_time'    => array('type' => 'text', 'label' => '活动开始时间','class'=>'datepicker','extra'=>array('data'=>array('format'=>'YYYY-MM-DD'),'wrapper'=>'col-sm-3')),
+            'end_time'    => array('type' => 'text', 'label' => '活动结束时间','class'=>'datepicker','extra'=>array('data'=>array('format'=>'YYYY-MM-DD'),'wrapper'=>'col-sm-3')),
+            'status'         => array('type' => 'radio', 'label' => '状态','default'=> array(0 => '非公开', 1 => '公开')),
+        );
+        //默认值设置
+        $item['status']  = '非公开';
+        $item['event_author']  =  $author[1];
+        $item['event_author_hide'] = $author[1];
+        
+        $this->assign('item',$item);
+        $this->assign('data',$this->data);
+        return view();
+    }
+
+    //新增活动操作
+    public function add()
+    {
+        $events = new Events;
+        $data = input('post.');
+        //获取当前作者名对应ID
+        $author_id = Author::where('author',$data['event_author_hide'])->column('id');
+        $data['event_author'] = $author_id[0];
+
+        if($_POST['status']){
+            $data['start_time'] = strtotime($_POST['start_time']);
+            $data['end_time'] = strtotime($_POST['end_time']);
+            $rule = [
+                'status|状态' => 'require',
+                'event_author|活动作者' => 'require',
+                'event_content|活动内容' => 'require',
+                'start_time|活动开始时间' => 'require',
+                'end_time|活动结束时间' => 'require',
+            ];
+        }else{
+            if(empty($data['start_time'])){
+                $data['start_time'] = 0;
+            }else{
+                $data['start_time'] = strtotime($data['start_time']);
+            }
+            if(empty($data['end_time'])){
+                $data['end_time'] = 0;
+            }else{
+                $data['end_time'] = strtotime($data['end_time']);
+            }
+            $rule = [
+                'status|状态' => 'require',
+                'event_author|活动作者' => 'require',
+                'event_content|活动内容' => 'require',
+            ];
+        }
+         //数据验证
+        $validate = new Validate($rule);
+        $result   = $validate->check($data);
+
+        //保存图片原名
+        $data['origin_image_name'] = $_FILES['feature_image']['name'];
+        $data['origin_title_image_name'] = $_FILES['title_image']['name'];
+
+        //保存图片信息
+        //保存封面图片
+        if(is_uploaded_file($_FILES['title_image']['tmp_name'])){  
+            if(config('system_toggle')){//设为linux文件系统路径
+                $path = ROOT_PATH . 'public' . DS . 'uploads/events/title_image/';
+            }else{//设为windows文件系统路径
+                $path = ROOT_PATH . 'public' . DS . '/uploads\events\title_image\/';
+            }
+            //重命名文件名
+            $title_new_name = explode('.',$_FILES['title_image']['name']);
+            $title_new = time().'.'.$title_new_name[count($title_new_name)-1];
+            if(!move_uploaded_file($_FILES['title_image']['tmp_name'],$path.$title_new)){
+                $this->error('上传首页封面图片失败','/admin/events/create');
+            }else{
+                $data['source_title_image'] = $title_new;
+            }
+        }else{
+            $this->error('请选择首页封面图片','/admin/events/create');
+        }
+
+        //保存活动详情图片
+        if(is_uploaded_file($_FILES['feature_image']['tmp_name'])){  
+            if(config('system_toggle')){//设为linux文件系统路径
+                $path = ROOT_PATH . 'public' . DS . 'uploads/events/';
+            }else{//设为windows文件系统路径
+                $path = ROOT_PATH . 'public' . DS . '/uploads\events\/';
+            }
+            //重命名文件名
+            $new_name = explode('.',$_FILES['feature_image']['name']);
+            $new = time().'.'.$new_name[count($new_name)-1];
+            if(!move_uploaded_file($_FILES['feature_image']['tmp_name'],$path.$new)){
+                $this->error('上传活动详情页图片失败','/admin/events/create');
+            }else{
+                $data['source_image'] = $new;
+            }
+        }else{
+            $this->error('请选择活动详情页图片','/admin/events/create');
+        }
+        //清除数据库中没有的字段
+        unset($data['events_create']);
+        unset($data['event_author_hide']);
+        unset($data['create_time_hide']);
+        unset($data['image_url']);
+        unset($data['title_image_url']);
+        //获取当前登录管理员ID
+        $user = new AdministratorModel;
+        if(session('uid')){
+            $where_query = array(
+                'username' => session('admin_username'),
+                'password' => session('admin_password'),
+            );
+            $user = $user->where($where_query)->find();
+        }
+        $login_admin_id = $user->id;
+        $data['event_admin'] = $login_admin_id;
+        $data['update_admin'] = $login_admin_id;
+        $data['create_time'] = time();
+        $data['update_time'] = time();
+
+        if ($id = $events->validate(true)->insertGetId($data)) {
+            $this->redirect($this->data['module_url'].'search/1');
+        } else {
+            return $this->error($events->getError());
+        }
+    }
+
+    //读取活动信息
+    public function read($id='')
+    {
+        $this->data['permission'] = parent::admin_permission();
+        //查询当前活动的作者ID
+        $author_id = Events::where('id',$id)->column('event_author');
+        //获取当前活动作者名
+        $author_name = Author::where('id',$author_id[0])->column('author');
+        $tmp_name = $author_name[0];
+        //获取当前活动开始时间和结束时间
+        $tmp_start_time = Events::where('id',$id)->column('start_time');
+        $event_start_time = date('Y-m-d',$tmp_start_time[0]);
+        $tmp_end_time = Events::where('id',$id)->column('end_time');
+        $event_end_time = date('Y-m-d',$tmp_end_time[0]);
+        //获取当前活动状态
+        $tmp_status = Events::where('id',$id)->column('status');
+        $event_status = $tmp_status[0];
+        //获取上传的图片名称
+        $tmp_origin_image_name = Events::where('id',$id)->column('origin_image_name');
+        $origin_image_name = $tmp_origin_image_name[0];
+        $tmp_origin_title_image_name = Events::where('id',$id)->column('origin_title_image_name');
+        $origin_title_image_name = $tmp_origin_title_image_name[0];
+        //获取图片名称
+        $tmp_feature_image = Events::where('id',$id)->column('source_image');
+        $feature_image = $tmp_feature_image[0];
+        $tmp_title_image = Events::where('id',$id)->column('source_title_image');
+        $title_image = $tmp_title_image[0];
+
+        $this->data['edit_fields'] = array(
+            'event_title'     => array('type' => 'text', 'label' => '标题','notes'=>'请控制字数在16字以内'),
+            'title_image'  => array('type' => 'file','label' => '首页封面图片', 'id'=>'title_image'),
+            'feature_image'  => array('type' => 'file','label' => '详情页面图片', 'id'=>'feature_image'),
+            'event_content'   => array('type' => 'textarea', 'label' => '内容','id'=>'ckeditor_post_content'),
+            'event_author'   => array('type' => 'text', 'label' => '作者', 'disabled'=>'true','extra'=>array('wrapper'=>'col-sm-4')),
+            'start_time'    => array('type' => 'text', 'label' => '活动开始时间','class'=>'datepicker','extra'=>array('data'=>array('format'=>'YYYY-MM-DD'),'wrapper'=>'col-sm-3')),
+            'end_time'    => array('type' => 'text', 'label' => '活动结束时间','class'=>'datepicker','extra'=>array('data'=>array('format'=>'YYYY-MM-DD'),'wrapper'=>'col-sm-3')),
+            'status'         => array('type' => 'radio', 'label' => '状态','default'=> array(0 => '非公开', 1 => '公开')),
+        );
+
+        //默认值设置
+        $item = Events::get($id);
+        $item['event_content'] = str_replace('&', '&amp;', $item['event_content']);
+        $item['event_author']  =  $tmp_name;
+        $item['event_author_hide'] = $tmp_name;
+        $item['start_time'] = '';
+        $item['end_time'] = '';
+        $item['start_time_hide'] = $event_start_time;
+        $item['end_time_hide'] = $event_end_time;
+        $item['status_hide'] = $event_status;
+        $item['image_hide'] = $origin_image_name;
+        $item['title_image_hide'] = $origin_title_image_name;
+        $item['feature_image'] = 'events/'.$feature_image;
+        $item['title_image'] = 'events/title_image/'.$title_image;
+
+        $this->assign('item',$item);
+        $this->assign('data',$this->data);
+        return view();
+    }
+
+    //更新活动信息
+    public function update($id)
+    {
+        $events = new Events;
+        $data = input('post.');
+        $where_query_event = array(
+            'id' => $id,
+        );
+        $event_result = $events->where($where_query_event)->find();
+      
+        //获取当前作者名对应ID
+        $author_id = Author::where('author',$data['event_author_hide'])->column('id');
+        $data['event_author'] = $author_id[0];
+
+        if($_POST['status_hide']==1){
+            $data['start_time'] = strtotime($_POST['start_time']);
+            $data['end_time'] = strtotime($_POST['end_time']);
+            $rule = [
+                'status|状态' => 'require',
+                'event_author|活动作者' => 'require',
+                'event_content|活动内容' => 'require',
+                'start_time|活动开始时间' => 'require',
+                'end_time|活动结束时间' => 'require',
+            ];
+        }else{
+            if(empty($data['start_time'])){
+                $data['start_time'] = 0;
+            }else{
+                $data['start_time'] = strtotime($data['start_time']);
+            }
+            if(empty($data['end_time'])){
+                $data['end_time'] = 0;
+            }else{
+                $data['end_time'] = strtotime($data['end_time']);
+            }
+            $rule = [
+                'status|状态' => 'require',
+                'event_author|活动作者' => 'require',
+                'event_content|活动内容' => 'require',
+            ];
+        }
+        $msg = [];
+        // 数据验证
+        $validate = new Validate($rule,$msg);
+        $result   = $validate->check($data);
+        $data['id'] = $id;
+        $data['origin_image_name'] = $_POST['image_hide'];
+        $data['origin_title_image_name'] = $_POST['title_image_hide'];
+
+        //保存图片信息
+        //保存封面图片
+        if(is_uploaded_file($_FILES['title_image']['tmp_name'])){  
+            if(config('system_toggle')){//设为linux文件系统路径
+                $path = ROOT_PATH . 'public' . DS . 'uploads/events/title_image/';
+            }else{//设为windows文件系统路径
+                $path = ROOT_PATH . 'public' . DS . '/uploads\events\title_image\/';
+            }
+            //重命名文件名
+            $title_new_name = explode('.',$_FILES['title_image']['name']);
+            $title_new = time().'.'.$title_new_name[count($title_new_name)-1];
+            if(!move_uploaded_file($_FILES['title_image']['tmp_name'],$path.$title_new)){
+                $this->error('上传首页封面图片失败','/admin/events/'.$id);
+            }else{
+                $data['source_title_image'] = $title_new;
+            }
+            $this->data['image_delete_flag'] = 1;
+        }elseif(!is_uploaded_file($_FILES['title_image']['tmp_name']) && empty($_FILES['title_image']['tmp_name']) && !empty($_POST['title_image_hide']) && $_POST['title_image_hide']==$event_result->origin_title_image_name){
+                $this->data['image_delete_flag'] = 0;
+        }else{
+            $this->data['image_delete_flag'] = 0;
+            $this->error('请选择首页封面图片','/admin/events/'.$id);
+        }
+
+        //保存活动详情图片
+        if(is_uploaded_file($_FILES['feature_image']['tmp_name'])){  
+            if(config('system_toggle')){//设为linux文件系统路径
+                $path = ROOT_PATH . 'public' . DS . 'uploads/events/';
+            }else{//设为windows文件系统路径
+                $path = ROOT_PATH . 'public' . DS . '/uploads\events\/';
+            }
+            //重命名文件名
+            $new_name = explode('.',$_FILES['feature_image']['name']);
+            $new = time().'.'.$new_name[count($new_name)-1];
+            if(!move_uploaded_file($_FILES['feature_image']['tmp_name'],$path.$new)){
+                $this->error('上传活动详情页图片失败','/admin/events/'.$id);
+            }else{
+                $data['source_image'] = $new;
+            }
+            $this->data['image_delete_flag'] == 1;
+        }elseif(!is_uploaded_file($_FILES['feature_image']['tmp_name']) && empty($_FILES['feature_image']['tmp_name']) && !empty($_POST['image_hide']) && $_POST['image_hide']==$event_result->origin_image_name){
+            $this->data['image_delete_flag'] == 0;
+        }else{
+            $this->data['image_delete_flag'] == 0;
+            $this->error('请选择活动详情页图片','/admin/events/'.$id);
+        }
+        
+        //获取当前登录管理员ID
+        $user = new AdministratorModel;
+        if(session('uid')){
+            $where_query = array(
+                'username' => session('admin_username'),
+                'password' => session('admin_password'),
+            );
+            $user = $user->where($where_query)->find();
+        }
+        $login_admin_id = $user->id;
+        $data['update_admin'] = $login_admin_id;
+        $data['update_time'] = time();
+        $data['show_flag'] = 0;
+        //清除数据库中没有的字段
+        unset($data['events_update']);
+        unset($data['event_author_hide']);
+        unset($data['update_time_hide']);
+        unset($data['image_url']);
+        unset($data['title_image_url']);
+        unset($data['status_hide']);
+        unset($data['image_hide']);
+        unset($data['title_image_hide']);
+        unset($data['start_time_hide']);
+        unset($data['end_time_hide']);
+
+        //删除旧图片
+        if($this->data['image_delete_flag']==1){
+            $this->delete_image($id);
+        }
+        
+        if ($events->update($data)) {
+            $this->redirect($this->data['module_url'].'search/1');
+        } else {
+            return $events->getError();
+        }
+    }
+
+    //删除活动(非物理删除)
+    public function delete($id)
+    {
+        //获取当前登录管理员ID
+        $user = new AdministratorModel;
+        if(session('uid')){
+            $where_query = array(
+                'username' => session('admin_username'),
+                'password' => session('admin_password'),
+            );
+            $user = $user->where($where_query)->find();
+        }
+        $login_admin_id = $user->id;
+        $events = new Events;
+        $data['id'] = $id;
+        $data['status'] = -1;
+        $data['update_admin'] = $login_admin_id;
+        //删除图片文件
+        $this->delete_image($id);
+        $data['source_image'] = '';
+        $data['source_title_image'] = '';
+        $data['origin_image_name'] = '';
+        $data['origin_title_image_name'] = '';
+
+        if ($events->update($data)) {
+            $data['error'] = 0;
+            $data['msg'] = '删除成功';
+        } else {
+            $data['error'] = 1;
+            $data['msg'] = '删除失败';
+        }
+        return $data;
+    }
+
+    //删除图片功能
+    public function delete_image($id){
+        $events = Events::get($id);
+        //删除首页活动图片
+        $source_title_image = $events->source_title_image;
+        if (file_exists($this->data['upload_path'] .'/events/title_image/'. $source_title_image)) {
+            @unlink($this->data['upload_path'] .'/events/title_image/'. $source_title_image);
+        }
+        $source_image = $events->source_image;
+        if (file_exists($this->data['upload_path'] .'/events/'. $source_image)) {
+            @unlink($this->data['upload_path'] .'/events/'. $source_image);
+        }
+    }
+}

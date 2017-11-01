@@ -1,0 +1,205 @@
+<div class="row">
+{foreach name="data.edit_fields" item="field" key="key" }
+	{switch name=$field['type'] }
+        {case value="text"}
+            {if isset($field['extra']['wrapper'])}
+                <div class="<?php echo $field['extra']['wrapper'];?>">
+            {else/}
+                <div class="col-xs-12">
+            {/if}
+                <div class="form-group">
+                    {if isset($field['label']) AND $field['label']}<label>{$field['label']}</label>{/if}
+
+                    <input type="{$field['type']}"
+                        {if isset($field['id']) AND $field['id']}id="{$field['id']}"{/if}
+                        {if isset($field['disabled']) AND $field['disabled']}disabled="disabled"{/if}
+                        class="form-control {if isset($field['class']) AND $field['class']}{$field['class']}{/if}"
+                        {if isset($field['extra']['data']['format']) }data-format="{$field['extra']['data']['format']}"{/if}
+
+                        {if isset($field['extra']['data1']['format1']) }data-todayBtn="{$field['extra']['data1']['format1']}"{/if}
+                        name="{$key}" value="{if isset($item[$key])}{$item[$key]}{/if}">
+
+                    {if isset($field['notes']) AND $field['notes']}<p class="help-block" style="color:red;">{$field['notes']}</p>{/if}
+                </div>
+            </div>
+        {/case}
+        {case value="password"}
+            {if isset($field['extra']['wrapper'])}
+                <div class="<?php echo $field['extra']['wrapper'];?>">
+            {else/}
+                <div class="col-xs-12">
+            {/if}
+                <div class="form-group">
+                    {if isset($field['label']) AND $field['label']}<label>{$field['label']}</label>{/if}
+
+                    <input type="{$field['type']}"
+                    {if isset($field['id']) AND $field['id']}id="{$field['id']}"{/if}
+                    {if isset($field['disabled']) AND $field['disabled']}disabled="disabled"{/if}
+                    class="form-control" name="{$key}" value="">
+
+                    {if isset($field['notes']) AND $field['notes']}<p class="help-block" style="color:red;">{$field['notes']}</p>{/if}
+                </div>
+            </div>
+        {/case}
+        {case value="file"}
+            {if isset($field['extra']['wrapper'])}
+                <div class="<?php echo $field['extra']['wrapper'];?>">
+            {else/}
+                <div class="col-xs-12">
+            {/if}
+                <div class="form-group">
+                    {if isset($field['label']) AND $field['label']}<label>{$field['label']}</label>{/if}
+
+                    <div style="height: 25px;line-height: 25px;position: relative;">
+                        <span style="width: 72px;background: #f2f2f2;border: 1px #ccc solid;border-radius: 3px;position: absolute;cursor: pointer;display: inline-block;text-align: center;">上传图片</span>
+                        
+                        <input type="{$field['type']}"
+                        {if isset($field['id']) AND $field['id']}id="{$field['id']}"{/if}
+                        {if isset($field['disabled']) AND $field['disabled']}disabled="disabled"{/if}
+                        name="{$key}" style="opacity:0;position: absolute;top: -1px;left: -1px;width: 72px;height: 25px;">
+                        <!-- onchange="showimage(this,'{$field['id']}')" -->
+                    </div>
+
+                    {if isset($item[$key]) AND $item[$key] != ""}
+                    {if $field['id']=='title_image'}
+                        <img id="{$field['id']}_preshow" src="__UPLOADS__/{$item[$key]}" class="img-responsive img-thumbnail" style="margin-top: 5px;max-width:10%;">
+                    {elseif $field['id']=='feature_image'}
+                        <img id="{$field['id']}_preshow" src="__UPLOADS__/{$item[$key]}" class="img-responsive img-thumbnail" style="margin-top: 5px;max-width:40%;"> 
+                    {/if}
+                    {else}
+                    {if isset($field['id']) AND $field['id'] AND $field['id']=='title_image'}
+                        <img id="title_image_preshow" style="margin-top: 5px;max-width:10%;"/>
+                        <div id="title_image_alert" style="font-size: 0.5em;"></div>
+                    {elseif isset($field['id']) AND $field['id'] AND $field['id']=='feature_image'}
+                        <img id="feature_image_preshow" style="margin-top: 5px;max-width:40%;"/>
+                        <div id="feature_image_alert" style="font-size: 0.5em;"></div>
+                    {/if}
+                    {/if}
+
+<!--                     {if isset($item[$key]) AND $item[$key] != "" AND $field['id']=='feature_image'}
+                        <img id="{$field['id']}_preshow" src="__UPLOADS__/{$item[$key]}" class="img-responsive img-thumbnail" style="margin-top: 5px;width:20%;">
+                    {/if} -->
+
+                    <!--<div id="{$field['id']}_alert" style="font-size: 0.5em;"></div>-->
+                    
+                    <!-- {if $field['id']=='title_image'}
+                    <img id="{$field['id']}_preshow" style="margin-top:5px;width:10%;"/>
+                    {else}
+                    <img id="{$field['id']}_preshow" style="margin-top:5px;width:20%;"/>
+                    {/if} -->
+                    
+                    {if isset($field['notes']) AND $field['notes']}<p class="help-block" style="color:red;">{$field['notes']}</p>{/if}
+                </div>
+            </div>
+        {/case}
+        {case value="radio"}
+            {if isset($field['extra']['wrapper'])}
+                <div class="<?php echo $field['extra']['wrapper'];?>">
+            {else/}
+                <div class="col-xs-12">
+            {/if}
+                <div class="checkbox">
+                    {if isset($field['label']) AND $field['label']}<span>{$field['label']}</span>{/if}
+
+                    {foreach $field['default'] as $ov => $ol }
+                        <label>
+                            <input type="{$field['type']}" name="{$key}"
+                                {if isset($field['disabled']) AND $field['disabled']}disabled="disabled"{/if}
+                                value="{$ov}" {if(isset($item[$key]) && $item[$key] == $ol)}
+                                checked="checked" {/if}> {$ol}
+                        </label>
+                    {/foreach}
+
+                    {if isset($field['notes']) AND $field['notes']}<p class="help-block" style="color:red;">{$field['notes']}</p>{/if}
+                </div>
+            </div>
+        {/case}
+        {case value="checkbox"}
+            {if isset($field['extra']['wrapper'])}
+                <div class="<?php echo $field['extra']['wrapper'];?>">
+            {else/}
+                <div class="col-xs-12">
+            {/if}
+                <div class="checkbox">
+                    {if isset($field['label']) AND $field['label']}<span>{$field['label']}</span>{/if}
+
+                    {foreach $field['default'] as $ov => $ol }
+                        <label>
+                            <input type="{$field['type']}" name="{$key}[]"
+                                {if isset($field['disabled']) AND $field['disabled']}disabled="disabled"{/if}
+                                value="{$ov}" {if(isset($item[$key]) && $item[$key] == $ol)}
+                                checked="checked"{/if}> {$ol}
+                        </label>
+                    {/foreach}
+
+                    {if isset($field['notes']) AND $field['notes']}<p class="help-block" style="color:red;">{$field['notes']}</p>{/if}
+                </div>
+            </div>
+        {/case}
+        {case value="select"}
+            {if isset($field['extra']['wrapper'])}
+                <div class="<?php echo $field['extra']['wrapper'];?>">
+            {else/}
+                <div class="col-xs-12">
+            {/if}
+                <div class="form-group">
+                    {if isset($field['label']) AND $field['label']}<label>{$field['label']}</label>{/if}
+
+                    <select  name="{$key}"
+                        {if isset($field['id']) AND $field['id']}id="{$field['id']}"{/if}
+                        {if isset($field['disabled']) AND $field['disabled']}disabled="disabled"{/if}
+                        class="form-control" style="max-width: 300px;">
+
+                            {foreach $field['default'] as $ov => $ol }
+                                <option value="{$ov}" {if isset($item[$key]) AND $item[$key] == $ol}selected="selected"{/if}>{$ol}</option>
+                            {/foreach}
+                    </select>
+
+                    {if isset($field['notes']) AND $field['notes']}<p class="help-block" style="color:red;">{$field['notes']}</p>{/if}
+                </div>
+            </div>
+        {/case}
+        {case value="textarea"}
+            {if isset($field['extra']['wrapper'])}
+                <div class="<?php echo $field['extra']['wrapper'];?>">
+            {else/}
+                <div class="col-xs-12">
+            {/if}
+                <div class="form-group">
+                    {if isset($field['label']) AND $field['label']}<label>{$field['label']}</label>{/if}
+
+                    <textarea
+                        class="form-control {if isset($field['class']) AND $field['class']}{$field['class']}{/if}"
+                        {if isset($field['id']) AND $field['id']}id="{$field['id']}"{/if}
+                        name="{$key}"
+                        {if isset($field['disabled']) AND $field['disabled']}disabled="disabled"{/if}>{if isset($item[$key]) AND $item[$key]}{$item[$key]}{/if}</textarea>
+                    {if(isset($data.ckeditor) and $data.ckeditor)}{:display_ckeditor($data.ckeditor);}{/if}
+
+                    {if isset($field['notes']) AND $field['notes']}<p class="help-block" style="color:red;">{$field['notes']}</p>{/if}
+                </div>
+            </div>
+        {/case}
+
+        {case value="alert"}
+            {if isset($field['extra']['wrapper'])}
+                <div class="<?php echo $field['extra']['wrapper'];?>">
+            {else/}
+                <div class="col-xs-12">
+            {/if}
+                <div class="alert {if isset($field['class']) AND $field['class']}{$field['class']}{else/}alert-info{/if}">
+                    {if isset($field['default'])}{$field['default']}{/if}
+                </div>
+            </div>
+        {/case}
+
+        {case value="hr"}
+             <div class="clearfix hr b-b mb-20 pb-20"></div>
+        {/case}
+
+        {case value="clearfix"}
+             <div class="clearfix"></div>
+        {/case}
+        {default /}
+    {/switch}
+{/foreach}
+</div>

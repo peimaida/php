@@ -1,0 +1,47 @@
+<?php
+/*
+ * @基于TP5框架开发
+ * @Misumi Mobile Site_定时更新控制器
+ * @Created by MD.Pei
+*/
+namespace app\admin\controller;
+use think\Controller;
+use app\admin\model\Administrator;
+use app\admin\model\Author;
+use app\admin\model\Tags;
+use app\admin\model\Posts;
+use app\admin\model\Events;
+use app\admin\model\Banners;
+use think\Validate;
+use think\Image;
+use think\Request;
+use think\Db;
+use think\Model;
+use think\Log;
+
+class CrontabController extends Controller{
+	
+	//更新开始显示和关闭显示状态
+	public function update(){
+		foreach(config('tables') as $value){
+			$sql_start = "update ".$value." set ".$value.".show_flag = 1 where ".$value.".status=1 and ".$value.".start_time <= unix_timestamp()";
+
+			$sql_end = "update ".$value." set ".$value.".show_flag = 0 where ".$value.".status=1 and ".$value.".end_time < unix_timestamp()";
+
+			$result_start = Db::execute($sql_start);
+			if($result_start>=0){
+				Log::write('更新'.$value.'开始显示状态成功');
+			}else{
+				Log::write('更新'.$value.'开始显示状态失败','notice');
+			}
+
+			$result_end = Db::execute($sql_end);
+			if($result_end>=0){
+				Log::write('更新'.$value.'关闭显示状态成功');
+			}else{
+				Log::write('更新'.$value.'关闭显示状态失败','notice');
+			}
+		}
+	}
+
+}

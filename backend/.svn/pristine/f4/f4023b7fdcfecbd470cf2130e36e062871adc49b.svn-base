@@ -1,0 +1,16 @@
+<div class="container">
+	<h1 class="page-title">
+		<img src="../../../../public/static/front/images/top_23.png" class="page-title-img">
+		<span class="page-title-txt">活动特辑</span>
+	</h1>
+	<div class="show-content">
+	{if($list)}
+    {foreach name="list" item="value"}
+	<dl>
+		<a href="{:url($data.module_url.$value['id'])}" target="_self"><img src="../../../../public/uploads/events/{$value['source_image']}" alt='{$value["event_title"]}' />
+		</a>
+	</dl>
+	{/foreach}
+	{/if}
+	</div>
+</div>

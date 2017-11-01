@@ -1,0 +1,20 @@
+<div class="container">
+	<h1 class="page-title">
+		<img src="../../../../public/static/front/images/top_25.png" class="page-title-img">
+		<span class="page-title-txt">新闻中心</span>
+	</h1>
+	<div class="show-news-content">
+		{if($list)}
+        {foreach name="list" item="value"}
+            <dl class="show-box">
+            	<a href="{:url($data.module_url.$value['id'])}" target="_self">
+               		<dd>
+             			<img src="../../../../public/uploads/posts/title_image/{$value['source_title_image']}" alt='{$value["post_title"]}' />
+               		</dd>
+           			<dt><p><span><span class="txt-outer"><span class="txt-inner">{$value['post_title']}</span></span></span></p></dt>
+              </a>
+			      </dl>
+        {/foreach}
+    {/if}
+	</div>
+</div>

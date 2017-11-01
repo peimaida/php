@@ -1,0 +1,50 @@
+{__NOLAYOUT__}
+<html>
+<head>
+<title>{$data.module_name}</title>
+<style type="text/css">
+	*{margin: 0;padding: 0;font-family: "Microsoft YaHei","微软雅黑","黑体"}
+	.main{width: 700px;margin: 30px auto;overflow: hidden;}
+	.top-div h2{margin-bottom: 35px;color: #016ac6;padding-bottom: 15px;border-bottom: 1px #016ac6 dashed;padding-top: 15px;letter-spacing: 1px;}
+	.logo-div{border-top: 3px #016ac6 solid;border-bottom:1px #444 solid;}
+	.logo-div .logo-pic{width: 180px;display: block;padding: 20px 0;}
+	.content .hint{margin-bottom: 15px;font-size: 18px;}
+	.content .container{padding: 20px;border: 1px #016ac6 solid;}
+	.subBtn{display: block; width: 140px;height: 50px;cursor: pointer;background-color: #ff730a; border: 0; color: #fff; font-size: 16px; font-weight: bold; border-radius: 5px; margin-top: 30px;}
+	.dlBtn{display: block; width: 140px;height: 50px;cursor: pointer;background-color: #ff730a; border: 0; color: #fff; font-size: 16px; font-weight: bold; border-radius: 5px; margin-top: 30px;text-decoration: none;   line-height: 50px; text-align: center;}
+	.subBtn:hover,.dlBtn:hover{opacity: 0.7;filter:alpha(opacity=70);-webkit-opacity:0.7;-moz-opacity:0.7;}
+</style>
+</head>
+<body>
+<form action="/qr" method="post" enctype="multipart/form-data">
+<div class="main">
+	<div class="top-div">
+        <div class="logo-div">
+            <img src="../../../../public/static/front/images/code/logo_top.png" class="logo-pic">
+        </div>
+        <h2>二维码生成工具</h2>
+    </div>
+    <div class="content">
+    	{if $download==0}
+    		<p class="hint">请上传需要生成二维码的csv文件。</p>
+    		<div class="container">
+			<label for="file">上传文件：</label>
+			<input type="file" name="qr_file" id="qr_file"><br>
+			<input type="submit" name="qr_submit" value="生成二维码" class="subBtn">
+			</div>
+			{/if}
+			{if $flag==1}
+			<div style="color:red;">{$msg}</div>
+			{/if}
+			{if $download==1}
+			<p class="hint">已成功生成QR文件！</p>
+			<a href="{$link}" class="dlBtn">下载QR文件</a>
+			<br>
+			<a href="/qr">返回重新上传csv文件</a>
+		{/if}
+    </div>
+</div>
+
+</form>
+</body>
+</html>

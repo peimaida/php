@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html long=en>
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport">
+		<title>页面没有找到</title>
+		<link rel="stylesheet" type="text/css" href="../public/static/front/css/page404-style.css"/>
+		<link rel="stylesheet" href="../public/static/front/css/base.css" />
+	</head>
+	<div class="container">
+		<div class="titl1"><h1>PAGE NOT FOUND</h1></div>
+		<section class="content-show">
+			<h4>非常抱歉，没有找到该指定的页面</h4>
+			<h5>可能有以下几种原因:</h5>
+			<div class="show-infor">
+				<p><strong>1</strong><span>该页面已经被删除</span></p>
+				<p><strong>2</strong><span>输入错误，请从检索框再次进行搜索</span></p>
+			</div>
+			<div class="btn-content">
+				<ul>
+					<li class="left"><a href="/"><span class="one">返回首页</span></a></li>
+					<li class="right"><a href="javascript:history.go(-1);"><span class="two">返回上一页</span></a></li>
+				</ul>
+			</div>
+		</section>
+		</div>
+	<body>
+		
+	</body>
+</html>

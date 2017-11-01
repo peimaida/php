@@ -1,0 +1,24 @@
+{__NOLAYOUT__}
+<html>
+<head>
+<title>{$data.module_name}</title>
+</head>
+<body>
+<form action="/qr" method="post" enctype="multipart/form-data">
+{if $download==0}
+<label for="file">文件名：</label>
+<input type="file" name="qr_file" id="qr_file"><br>
+<input type="submit" name="qr_submit" value="提交">
+{/if}
+{if $flag==1}
+<div style="color:red;">{$msg}</div>
+{/if}
+{if $download==1}
+QR文件已生成，
+<a href="{$link}">请点击下载</a>
+<br>
+<a href="/qr">返回重新上传csv文件</a>
+{/if}
+</form>
+</body>
+</html>

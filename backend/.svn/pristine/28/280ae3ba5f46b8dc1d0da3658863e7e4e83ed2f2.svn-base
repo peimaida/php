@@ -1,0 +1,37 @@
+    $(function () {
+        $('form').bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                start_time: {
+                    validators: {
+                        callback: {
+                            message: '开始时间不能晚于结束时间',
+                            callback:function(value, validator,$field,options){
+                                var begin = $('.maintenance_form').find("input[name='end_time']").val();
+                                return parseInt(value)<=parseInt(begin);
+                            }
+                        }
+                    }
+                },
+
+                end_time: {
+                    validators: {
+                        callback: {
+                            message: '结束时间不能早于开始时间',
+                            callback:function(value, validator,$field){
+                                var begin = $('.maintenance_form').find("input[name='start_time']").val();
+                                $('.maintenance_form').find("input[name='start_time']").keypress();
+                                validator.updateStatus('start_time', 'VALID');
+                                return parseInt(value)>=parseInt(begin);
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    });

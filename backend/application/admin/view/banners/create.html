@@ -1,0 +1,78 @@
+<section id="content">
+
+    <div class="page page-fullwidth-layout">
+
+        <div class="pageheader">
+
+            <h2>{$data.module_name}</h2>
+
+            <div class="page-bar">
+
+                <ul class="page-breadcrumb">
+                    <li>
+                        <a href="{:url($data.module_url)}"><i class="fa fa-list"></i> {$data.module_name}</a>
+                    </li>
+                    <li>
+                        新增{$data.module_title}
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="pagecontent">
+
+            <div class="add-nav">
+                <div class="nav-heading">
+                    <h3>新增{$data.module_title}</h3>
+                    <span class="controls pull-right">
+                        <a href="{:url($data.module_url)}" class="btn btn-ef btn-ef-1 btn-ef-1-default btn-ef-1a btn-rounded-20 mr-5" data-toggle="tooltip" title="返回"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+                    </span>
+                </div>
+
+                <!-- row -->
+                <div class="row">
+                    <!-- col -->
+                    <div class="col-md-12">
+
+                        <!-- tile -->
+                        <section class="tile">
+
+                            <!-- tile body -->
+                            <div class="tile-body">
+
+                                <form name="banners_create_form" role="form" enctype="multipart/form-data" action="{:url($data.module_url).'add'}" method="post">
+                                    {include file="custom-fields" /}
+                                    <input type="submit" class="btn btn-info" name="banners_create" onclick="get_img_url()" value="提交">
+                                    <input type="hidden" name="banner_author_hide" value="{$item.banner_author_hide}">
+                                    <input type="hidden" name="image_url" value="">
+                    			</form>
+
+                            </div>
+                            <!-- /tile body -->
+
+                        </section>
+                        <!-- /tile -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!--/ CONTENT -->
+
+<script type="text/javascript">
+    function get_img_url(){
+        var url = document.getElementById("feature_image").value; 
+        banners_create_form.image_url.value=url; 
+    }
+
+
+</script>
+
+<script src="../../../../public/static/back/js/banner.js"></script>

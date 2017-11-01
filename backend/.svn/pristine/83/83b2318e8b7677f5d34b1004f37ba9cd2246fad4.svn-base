@@ -1,0 +1,283 @@
+		<div class="container">
+			<div class="number">
+				<h1>No.000016 导通检查夹具</h1>
+			</div>
+
+			<div class="case_first">
+				<div class="title">
+					<div class="title_information">
+						<div class="inforamtion">
+							<p class="case01">案例演示</p>
+						</div>
+					</div>
+				</div>
+				<div class="case_information_img">
+					<div class="case_img">
+						<img src="../../../../public/static/front/incad_detail/000016/images/img_01_000016.jpg" />
+					</div>
+				</div>
+			</div>
+			<div class="case_two">
+				<div class="title">
+					<div class="title_information">
+						<div class="inforamtion">
+							<p class="case02">案例库说明</p>
+						</div>
+					</div>
+				</div>
+				<ul>
+					<li class="select">
+						<div class="case_title">
+							<div class="case_title_information">
+								<p>规格</p>
+							</div>
+							<span></span>
+							<div class="click"><img src="../../../../public/static/front/incad_detail/images/btn_bottom.png" /></div>
+						</div>
+						<ul>
+							<li>
+								<p class="p_title">目的·动作</p>
+								<p><strong>·</strong><span>通过探针确认导通的夹具。</span></p>
+							</li>
+							<li>
+								<p class="p_title">环境·操作性</p>
+								<p><strong>·</strong><span>基于肘夹动作的手动机构。</span></p>
+								<p><strong>·</strong><span>手动降下 探针</span></p>
+							</li>
+							<li>
+								<p class="p_title">对象工作</p>
+								<p><strong>·</strong><span>树脂成型产品(树脂外壳和电路板成套)外形：W122×D60×H20</span></p>
+							</li>
+						</ul>
+					</li>
+					<li class="select">
+						<div class="case_title">
+							<div class="case_title_information">
+								<p>特点</p>
+							</div>
+							<span></span>
+							<div class="click"><img src="../../../../public/static/front/incad_detail/images/btn_bottom.png" /></div>
+						</div>
+						<ul>
+							<li>
+								<p class="p_title">规格·尺寸</p>
+								<p><strong>·</strong><span>肘夹臂开闭角度(MC01-2B)：90°</span></p>
+								<p><strong>·</strong><span>肘夹行程(MC03-S1)：17mm</span></p>
+								<p><strong>·</strong><span>外形尺寸：W230×D100×H219</span></p>
+							</li>
+							<li>
+								<p class="p_title">主要零件的选型依据</p>
+								<p><strong>·</strong><span>肘夹<br/>&gt;为了节省空间，使用时90°倾斜底面压紧的卧式把手型。</span></p>
+								<p><strong>·</strong><span>拉伸弹簧<br/>&gt;操作力较小，选择弹簧常数较小的类型。</span></p>
+								<p><strong>·</strong><span>直线导轨<br/>&gt;力矩负载较小，因此选择最适合夹具整体规格的类型。</span></p>
+							</li>
+						</ul>
+					</li>
+					<li class="select">
+						<div class="case_title">
+							<div class="case_title_information">
+								<p>设计要点</p>
+							</div>
+							<span></span>
+							<div class="click"><img src="../../../../public/static/front/incad_detail/images/btn_bottom.png" /></div>
+						</div>
+						<ul>
+							<li>
+								<p class="p_title">主要零件的计算过程</p>
+								<p><strong>·</strong><span>操作负载较小，因此选择弹簧常数较小的弹簧。</span></p>
+								<p><strong>·</strong><span>拉伸弹簧负载<br/>
+                 	&gt;计算公式：反作用力F=kx+初始张力<br />
+                 	&gt;假设操作负载：F=10.335N<br />
+                 	&gt;初始张力：2.35N<br />
+                 	&gt;操作时的假设位移量：x=39.5mm(安装时为0mm、移动时为39.5mm)<br />
+                 	&gt;活动部分重量：1.1N<br />
+                 	&gt;k=(F-初始张力+活动部分重量)/x=(10.335-2.35+1.1)/39.5=0.23<br />
+                 	&gt;选择弹簧常数：k=0.23 N/mm
+                 </span></p>
+								<p><strong>·</strong><span>压缩弹簧负载<br/>
+                 	&gt;计算公式：反作用力F=kx<br />
+                 	&gt;假设负载：F=44N(2个弹簧)<br />
+                 	&gt;加压时的假设位移量：x=11mm(安装时为1mm、移动时为10mm)<br />
+                 	&gt;k=F/x/(2个弹簧)=44/11/2=2<br />
+                 	&gt;选择弹簧常数：k=2 N/mm
+                 </span></p>
+							</li>
+							<li>
+								<p class="p_title">构造制作与设计要点</p>
+								<p><strong>·</strong><span>采用直线导轨，使直线运动的操作稳定。</span></p>
+								<p><strong>·</strong><span>选择弹簧常数不会因活动部分自重而下降探针的拉伸弹簧。</span></p>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<!-- 零件表 -->
+			<div class="parts_list">
+				<div class="title">
+					<div class="title_information">
+						<div class="inforamtion">
+							<p class="part">零件表</p>
+						</div>
+					</div>
+				</div>
+				<ul>
+					<li class="list_information">
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110302203360/?ProductCode=MC01-2B"><img src="../../../../public/static/front/incad_detail/000016/images/img_01.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110302203360/?ProductCode=MC01-2B">
+										<p class="part_top">卧式肘夹</p>
+									</a>
+									<p class="part_number">MC01-2B</p>
+									<p class="part_much">所需数量：1</p>
+								</div>
+							</div>
+						</div>
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300527310/?ProductCode=TSPF50-3"><img src="../../../../public/static/front/incad_detail/000016/images/img_02.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300527310/?ProductCode=TSPF50-3">
+										<p class="part_top">T型拉手</p>
+									</a>
+									<p class="part_number">TSPF50-3</p>
+									<p class="part_much">所需数量：1</p>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="list_information">
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300266730/?ProductCode=SAIPOZ3-15"><img src="../../../../public/static/front/incad_detail/000016/images/img_03.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300266730/?ProductCode=SAIPOZ3-15">
+										<p class="part_top">拉伸弹簧用支柱</p>
+									</a>
+									<p class="part_number">SAIPOZ3-15</p>
+									<p class="part_much">所需数量：2</p>
+								</div>
+							</div>
+						</div>
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300041670/?ProductCode=SEBZ10-75"><img src="../../../../public/static/front/incad_detail/000016/images/img_04.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300041670/?ProductCode=SEBZ10-75">
+										<p class="part_top">微型直线导轨</p>
+									</a>
+									<p class="part_number">SEBZ10-75</p>
+									<p class="part_much">所需数量：1</p>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="list_information">
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300041670/?ProductCode=SEBZ10-95"><img src="../../../../public/static/front/incad_detail/000016/images/img_05.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300041670/?ProductCode=SEBZ10-95">
+										<p class="part_top">微型直线导轨</p>
+									</a>
+									<p class="part_number">SEBZ10-95</p>
+									<p class="part_much">所需数量：1</p>
+								</div>
+							</div>
+						</div>
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300266030/?ProductCode=AUY8-50"><img src="../../../../public/static/front/incad_detail/000016/images/img_06.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300266030/?ProductCode=AUY8-50">
+										<p class="part_top">拉伸弹簧</p>
+									</a>
+									<p class="part_number">AUY8-50</p>
+									<p class="part_much">所需数量：1</p>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="list_information">
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300399640/?ProductCode=NR90-C"><img src="../../../../public/static/front/incad_detail/000016/images/img_07.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300399640/?ProductCode=NR90-C">
+										<p class="part_top">探针座</p>
+									</a>
+									<p class="part_number">NR90-C</p>
+									<p class="part_much">所需数量：1</p>
+								</div>
+							</div>
+						</div>
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300399640/?ProductCode=NP90HD-C"><img src="../../../../public/static/front/incad_detail/000016/images/img_08.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300399640/?ProductCode=NP90HD-C">
+										<p class="part_top">探针</p>
+									</a>
+									<p class="part_number">NP90HD-C</p>
+									<p class="part_much">所需数量：1</p>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="list_information">
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110100140620/?ProductCode=MS3-15"><img src="../../../../public/static/front/incad_detail/000016/images/img_09.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110100140620/?ProductCode=MS3-15">
+										<p class="part_top">定位销</p>
+									</a>
+									<p class="part_number">MS3-15</p>
+									<p class="part_much">所需数量：6</p>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="list_btn">
+						<div class="more_btn">
+							<p>点击显示更多零件</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="careful_iformation">
+				<p><strong>※</strong><span>装置总成CAD数据由几个分总成构成。<br/>计划采用可按分总成为单位进行留用、编辑的构成。</span></p>
+			</div>
+			<div class="down_load">
+				<a href="{:url($data.module_download_url)}000016" onclick="ga('send','event','inCADdetail','click','sheetDL');">
+					<p>查看零件表</p>
+				</a>
+			</div>
+			<div class="notice">
+			   注：更多免费的案例请在PC端查看。
+			</div>
+	    </div>
+		<div class="return_top">
+			<img src="../../../../public/static/front/incad_detail/images/return_top.jpg" />
+		</div>
+
+	<script src="../../../../public/static/front/incad_detail/000016/js/js.js"></script>

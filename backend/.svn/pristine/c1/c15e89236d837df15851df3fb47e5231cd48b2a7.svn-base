@@ -1,0 +1,683 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:69:"E:\phpStudy\WWW\backend/application/index\view\incad\page_000223.html";i:1488091817;s:58:"E:\phpStudy\WWW\backend/application/index\view\layout.html";i:1488091817;s:58:"E:\phpStudy\WWW\backend/application/index\view\header.html";i:1488091817;s:58:"E:\phpStudy\WWW\backend/application/index\view\footer.html";i:1488091817;}*/ ?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<title><?php echo $data['module_name']; ?></title>
+<meta name="description" content="<?php echo $data['module_description']; ?>">
+<meta name="keywords" content="<?php echo $data['module_keywords']; ?>">
+<?php echo $data['module_js']; ?>
+<?php echo $data['module_css']; ?>
+</head>
+<body>
+
+   <header>
+     <div class="left">
+       <a href="javascript:;" class="slide-menu" target="_self">
+         <img src="__FRONT_PUBLIC__/images/top_01.png" alt="menu">
+       </a>
+     </div>
+     <div class="center_item">
+       <a href="/">
+         <img src="__FRONT_PUBLIC__/images/top_03.png" alt="misumi" />
+       </a>
+     </div>
+     <div class="right">
+       <a href="javascript:;" class="contact" target="_self">
+         <img src="__FRONT_PUBLIC__/images/top_02.png" alt="contact">
+       </a>
+     </div>
+   </header>
+
+<!-- menu-list -->
+<div class="slide-mask"></div>
+<aside class="slide-wrapper">
+   <div>
+     <ul>
+       <li class="slide-1st">
+         <a href="/" target="_self">
+           <img src="__FRONT_PUBLIC__/images/Guide/guide_01.png" alt="misumi" />
+         </a>
+       </li>
+       <li class="slide-list">
+	     <a href="/" target="_self" class="list-left">
+             <img src="__FRONT_PUBLIC__/images/Guide/guide_02.png" alt="home" />
+             <span>首页</span>
+             <span class="list-right">></span>
+       </a>
+       </li>
+       <li class="slide-list">
+	     <a href="/category" target="_self" class="list-left">
+             <img src="__FRONT_PUBLIC__/images/Guide/guide_03.png" alt="home" />
+             <span>商品分类</span>
+             <span class="list-right">></span>
+       </a>
+       </li>
+       <li class="slide-list">
+	     <a href="/topic" target="_self" class="list-left">
+             <img src="__FRONT_PUBLIC__/images/Guide/guide_05.png" alt="home" />
+             <span>活动特辑</span>
+             <span class="list-right">></span>
+       </a>
+       </li>
+       <li class="slide-list">
+	     <a href="/news" target="_self" class="list-left">
+             <img src="__FRONT_PUBLIC__/images/Guide/guide_04.png" alt="home" />
+             <span>新闻中心</span>
+             <span class="list-right">></span>
+       </a>
+       </li>
+       <li class="slide-list">
+	     <a href="/incad" target="_self" class="list-left">
+             <img src="__FRONT_PUBLIC__/images/Guide/guide_06.png" alt="home" />
+             <span>案例库</span>
+             <span class="list-right">></span>
+       </a>
+       </li>
+       <li class="slide-list">
+	     <a href="https://www.misumi-ec.com/cn/product/MN001ProductCheckCmd.do" target="_self" class="list-left">
+             <img src="__FRONT_PUBLIC__/images/Guide/guide_07.png" alt="home" />
+             <span>型号确认</span>
+             <span class="list-right">></span>
+       </a>
+       </li>
+       <li class="slide-list">
+	     <a href="/follow" target="_self" class="list-left">
+             <img src="__FRONT_PUBLIC__/images/Guide/guide_08.png" alt="home" />
+             <span>关注我们</span>
+             <span class="list-right">></span>
+       </a>
+       </li>
+     </ul>
+   </div>
+</aside>
+<!-- menu-list -->
+
+<!-- contact -->
+<div class="slide-contact">
+   <aside class="con-wrapper">
+      <div>
+        <ul>
+          <li>
+          <div class="sub-title">
+            <p>咨询电话</p>
+            <span class="close_btn"><img src="__FRONT_PUBLIC__/images/contact/close-btn.png" alt="close" /></span>
+          </div>
+          </li>
+          <li>
+            <div class="call-numble">
+              <a href="tel:021-67108701"><span>021-6710-8701</span></a>
+            </div>
+          </li>
+          <li>
+            <div class="call-time">
+              <span>受理时间：8:00～18:00<br />（周一～周六，不包括中国法定节假日）</span>
+            </div>
+          </li>
+          
+          <li>
+            <div class="show-content">
+            <h5 class="sub-title-infor"><span>语音快捷拨号一览</span></h5>
+            <p class="world-infor-1">(<span>※</span>例：电话拨通后，按<strong>3</strong>再按<span><img src="__FRONT_PUBLIC__/images/contact/number-img.png"/></span>可直接接通FA工厂自动化)</p>
+            <div class="show-infor">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td class="oneL"><img src="__FRONT_PUBLIC__/images/contact/show-ico-1.png" /></td>
+                        <td class="space"></td>
+                        <td class="oneTW" valign="center">
+                            <span>询价及订购</span>
+                        </td>
+                        <td class="space"></td>
+                        <td class="oneTh" align="center">
+                            <span>请按</span><strong>1</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="space-h" colspan="5"></td>
+                    </tr>
+                    <!--2-->
+                    <tr>
+                        <td class="oneL"><img src="__FRONT_PUBLIC__/images/contact/show-ico-2.png" /></td>
+                        <td class="space"></td>
+                        <td class="oneTW" valign="center">
+                            <span>网站及WOS使用相关</span>
+                        </td>
+                        <td class="space"></td>
+                        <td class="oneTh" align="center">
+                            <span>请按<strong>2</strong></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="space-h" colspan="5"></td>
+                    </tr>
+                    <!--3-->
+                    <tr>
+                        <td class="oneL-2"><img src="__FRONT_PUBLIC__/images/contact/show-ico-3.png" /></td>
+                        <td class="space"></td>
+                        <td class="oneTW oneTW-2" valign="top">
+                            <span>商品技术咨询</span>
+                            <p>FA工厂自动化</p>
+                            <p class="img-ico-2">FA电子·电气配线零部件</p>
+                            <p class="img-ico-3">刀具·工厂用品</p>
+                            <p class="img-ico-4">其他代理品牌商品（VONA）</p>
+                            <p class="img-ico-5">冲压模具</p>
+                            <p class="img-ico-6">塑料模具</p>
+                            <p class="img-ico-7">其他</p>
+                        </td>
+                        <td class="space"></td>
+                        <td class="oneTh" align="center" valign="center">
+                            <span class="oneth-1">请按<strong>3</strong></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="space-h" colspan="5"></td>
+                    </tr>
+                    <!--4-->
+                    <tr>
+                        <td class="oneL"><img src="__FRONT_PUBLIC__/images/contact/show-ico-4.png" /></td>
+                        <td class="space"></td>
+                        <td class="oneTW" valign="center">
+                            <span>新客户注册及目录申请</span>
+                        </td>
+                        <td class="space"></td>
+                        <td class="oneTh" align="center">
+                            <span>请按<strong>4</strong></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="space-h" colspan="5"></td>
+                    </tr>
+                    <!--5-->
+                    <tr>
+                        <td class="oneL"><img src="__FRONT_PUBLIC__/images/contact/show-ico-5.png" /></td>
+                        <td class="space"></td>
+                        <td class="oneTW" valign="center">
+                            <span>发票财务</span>
+                        </td>
+                        <td class="space"></td>
+                        <td class="oneTh" align="center">
+                            <span>请按<strong>5</strong></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="space-h" colspan="5"></td>
+                    </tr>
+                    <!--6-->
+                    <tr>
+                        <td class="oneL"><img src="__FRONT_PUBLIC__/images/contact/show-ico-6.png" /></td>
+                        <td class="space"></td>
+                        <td class="oneTW" valign="center">
+                            <span>其他业务</span>
+                        </td>
+                        <td class="space"></td>
+                        <td class="oneTh" align="center">
+                            <span>请按<strong>6</strong></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="space-h" colspan="5"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+          </li>
+        </ul>
+      </div>
+    </aside>
+</div>
+<!-- contact -->
+<script type="text/javascript" src="__FRONT_PUBLIC__/js/headerJs.js"></script>
+<script>
+$(function(){
+$('aside.con-wrapper').on('touchstart', 'li', function(e){
+$(this).addClass('current').siblings('li').removeClass('current');
+});
+
+$('a.contact').on('click', function(e){
+var wh = $('div.wrapperhove'+'rtree').height();
+$('div.slide-contact').css('height', wh).show();
+$('aside.con-wrapper').css('height', wh).addClass('moved');
+});
+
+$('div.slide-contact').on('click', function(){
+$('div.slide-contact').hide();
+$('aside.con-wrapper').removeClass('moved');
+});
+});
+</script>
+
+<!-- 显示窗口事件 -->
+<script>
+$(function(){
+$('aside.slide-wrapper').on('touchstart', 'li', function(e){
+$(this).addClass('current').siblings('li').removeClass('current');
+});
+
+$('a.slide-menu').on('click', function(e){
+var wh = $('div.wrapperhove'+'rtree').height();
+$('div.slide-mask').css('height', wh).show();
+$('aside.slide-wrapper').css('height', wh).addClass('moved');
+});
+
+$('div.slide-mask').on('click', function(){
+$('div.slide-mask').hide();
+$('aside.slide-wrapper').removeClass('moved');
+});
+});
+</script>
+		<div class="container">
+			<div class="number">
+				<p>No.000223 气缸层叠机构</p>
+			</div>
+			<div class="menu_information">
+				<div class="title">
+					<div class="title_information">
+						<div class="inforamtion">
+							<p class="menu">实例概要</p>
+						</div>
+					</div>
+				</div>
+				<ul>
+					<li>
+						<div class="trouble_shooting">
+							<div class="trouble">
+								<span><p class="star">目的</p></span>
+								<img src="../../../../public/static/front/incad_detail/images/module_img_01.png" />
+							</div>
+							<div class="shooting">
+								<p>接受滑轨上移动工件，纵向层叠存放5个</p>
+							</div>
+							<img src="../../../../public/static/front/incad_detail/images/module_img_02.png" />
+						</div>
+					</li>
+					<li>
+						<div class="trouble_shooting">
+							<div class="trouble">
+								<span><p class="question">条件</p></span>
+								<img src="../../../../public/static/front/incad_detail/images/module_img_01.png" />
+							</div>
+							<div class="shooting">
+								<p><strong>气缸的上升</strong>实现该功能</p>
+							</div>
+							<img src="../../../../public/static/front/incad_detail/images/module_img_02.png" />
+						</div>
+					</li>
+					<li>
+						<div class="trouble_shooting">
+							<div class="trouble">
+								<span><p class="solve">解决方法</p></span>
+								<img src="../../../../public/static/front/incad_detail/images/module_img_01.png" />
+							</div>
+							<div class="shooting">
+								<p><strong>通过棘轮机构</strong>向上进行层叠</p>
+							</div>
+							<img src="../../../../public/static/front/incad_detail/images/module_img_02.png" />
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="case_first">
+				<div class="title">
+					<div class="title_information">
+						<div class="inforamtion">
+							<p class="case01">案例演示</p>
+						</div>
+					</div>
+				</div>
+				<div class="case_information_img">
+					<div class="case_img">
+						<img src="../../../../public/static/front/incad_detail/000223/images/img_01_000223.jpg" />
+					</div>
+				</div>
+				<ul>
+					<li>
+						<div class="point">
+							<span>POINT &nbsp;<strong>1</strong></span>
+							<p>无油衬套和树脂垫圈的作用</p>
+						</div>
+						<div class="point_information">
+							<p>使用无油衬套进行旋转，轴向旋转时使用树脂垫圈</p>
+						</div>
+					</li>
+				</ul>
+				<div class="gif">
+					<div class="gif_img">
+						<div class="img"><img src="../../../../public/static/front/incad_detail/000223/images/000223.gif" /></div>
+					</div>
+				</div>
+			</div>
+			<div class="case_two">
+				<div class="title">
+					<div class="title_information">
+						<div class="inforamtion">
+							<p class="case02">案例库说明</p>
+						</div>
+					</div>
+				</div>
+				<ul>
+					<li class="select">
+						<div class="case_title">
+							<div class="case_title_information">
+								<p>动作、对象、规格精度</p>
+							</div>
+							<span></span>
+							<div class="click"><img src="../../../../public/static/front/incad_detail/images/btn_bottom.png" /></div>
+						</div>
+						<ul>
+							<li>
+								<p class="p_title">动作</p>
+								<p><strong>·</strong><span>工件投放、停止（生产节拍进给）→气缸上升（储料器接收）→气缸下降（转移完成），重复该动作。</span></p>
+							</li>
+							<li>
+								<p class="p_title">对象工件</p>
+								<p><strong>·</strong><span>形状 : 肩型托盘</span></p>
+								<p><strong>·</strong><span>规格： W150×D150×H30mm</span></p>
+								<p><strong>·</strong><span>重量： 0.6kg</span></p>
+							</li>
+							<li>
+								<p class="p_title">规格·尺寸</p>
+								<p><strong>·</strong><span>外形尺寸：W320×D220×H481mm</span></p>
+								<p><strong>·</strong><span>上升行程：100mm</span></p>
+							</li>
+							<li>
+								<p class="p_title">精度・负载</p>
+								<p><strong>·</strong><span>左右卡爪的偏差：±0.5mm</span></p>
+							</li>
+						</ul>
+					</li>
+					<li class="select">
+						<div class="case_title">
+							<div class="case_title_information">
+								<p>主要零件的选型依据</p>
+							</div>
+							<span></span>
+							<div class="click"><img src="../../../../public/static/front/incad_detail/images/btn_bottom.png" /></div>
+						</div>
+						<ul>
+							<li>
+								<p class="p_title">主要零件的选型依据</p>
+								<p><strong>·</strong><span>正确配置接收工件的卡爪。</span></p>
+								<p><strong>·</strong><span>选择气缸行程时，应考虑工件接收卡爪的动作。</span></p>
+								<p><strong>·</strong><span>选择气缸直径时，应考虑工件的重量和数量。</span></p>
+							</li>
+						</ul>
+					</li>
+					<!--3-->
+					<li class="select">
+						<div class="case_title">
+							<div class="case_title_information">
+								<p>主要零件的计算过程</p>
+							</div>
+							<span></span>
+							<div class="click"><img src="../../../../public/static/front/incad_detail/images/btn_bottom.png" /></div>
+						</div>
+						<ul>
+							<li>
+								<p class="p_title">主要零件的计算过程</p>
+								<p><strong>·</strong><span>验证所选气缸是否适合工件负载（选择气缸）</span></p>
+								<p><strong>·</strong><span>条件值：使用空气压力0.5MPa、效率：0.8</span></p>
+								<p><strong>·</strong><span>气缸的理论推力：402N</span></p>
+								<p><strong>·</strong><span>气缸推力=理论推力×效率，<br/> 气缸推力=402×0.8=321.6N <br/>（确认负载率）</span></p>
+								<p><strong>·</strong><span>条件值：工件重量0.6kg、工件数量5</span></p>
+								<p><strong>·</strong><span>负载=(工件重量×数量)×9.8，<br />负载=(0.6(kg)×5个)×9.8=29.4N</span></p>
+								<p><strong>·</strong><span>负载率(%)=(负载/气缸推力)×100， <br />负载率=(29.4/321.6)×100=9.1%＜50% <br />⇒满足条件</span></p>
+							</li>
+						</ul>
+					</li>
+					<li class="select">
+						<div class="case_title">
+							<div class="case_title_information">
+								<p>构造制作与设计要点</p>
+							</div>
+							<span></span>
+							<div class="click"><img src="../../../../public/static/front/incad_detail/images/btn_bottom.png" /></div>
+						</div>
+						<ul>
+							<li>
+								<p class="p_title">构造制作与设计要点</p>
+								<p><strong>·</strong><span>本机构的工件支承卡爪仅由最下方的卡爪构成，上方工件的负载会施加到最下方的工件上，因此各级均设置工件支承卡爪。</span></p>
+								<p><strong>·</strong><span>采用为工件支承卡爪留出返回空间的行程和配置。</span></p>
+								<p><strong>·</strong><span>本装置的存放数量为5个，高度带有余量时可存放30个左右。</span></p>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<!-- 零件表 -->
+			<div class="parts_list">
+				<div class="title">
+					<div class="title_information">
+						<div class="inforamtion">
+							<p class="part">零件表</p>
+						</div>
+					</div>
+				</div>
+				<ul>
+					<li class="list_information">
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300364370/?ProductCode=MGCLB32-100"><img src="../../../../public/static/front/incad_detail/000223/images/img_01.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300364370/?ProductCode=MGCLB32-100">
+										<p class="part_top">带导杆气缸</p>
+									</a>
+									<p class="part_number">MGCLB32-100</p>
+									<p class="part_much">所需数量：1</p>
+								</div>
+							</div>
+						</div>
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300351250/?ProductCode=ME34L1"><img src="../../../../public/static/front/incad_detail/000223/images/img_02.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300351250/?ProductCode=ME34L1">
+										<p class="part_top">气缸用传感器</p>
+									</a>
+									<p class="part_number">ME34L1</p>
+									<p class="part_much">所需数量：2</p>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="list_information">
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300089020/?ProductCode=PSFRW8-160-M4-N4"><img src="../../../../public/static/front/incad_detail/000223/images/img_03.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300089020/?ProductCode=PSFRW8-160-M4-N4">
+										<p class="part_top">转轴</p>
+									</a>
+									<p class="part_number">PSFRW8-160-M4-N4</p>
+									<p class="part_much">所需数量：10</p>
+								</div>
+							</div>
+						</div>
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300089020/?ProductCode=PSFMRW8-160-M4-N4"><img src="images/img_04.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300089020/?ProductCode=PSFMRW8-160-M4-N4">
+										<p class="part_top">转轴</p>
+									</a>
+									<p class="part_number">PSFMRW8-160-M4-N4</p>
+									<p class="part_much">所需数量：10</p>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="list_information">
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300037470/?ProductCode=MDZB8-10"><img src="../../../../public/static/front/incad_detail/000223/images/img_05.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300037470/?ProductCode=MDZB8-10">
+										<p class="part_top">无油衬套</p>
+									</a>
+									<p class="part_number">MDZB8-10</p>
+									<p class="part_much">所需数量：20</p>
+								</div>
+							</div>
+						</div>
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110302283610/?ProductCode=SWSPS16-8-1.0"><img src="../../../../public/static/front/incad_detail/000223/images/img_06.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110302283610/?ProductCode=SWSPS16-8-1.0">
+										<p class="part_top">超薄树脂垫圈</p>
+									</a>
+									<p class="part_number">SWSPS16-8-1.0</p>
+									<p class="part_much">所需数量：40</p>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="list_information">
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300018230/?ProductCode=PSCC8-8"><img src="../../../../public/static/front/incad_detail/000223/images/img_07.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300018230/?ProductCode=PSCC8-8">
+										<p class="part_top">固定环</p>
+									</a>
+									<p class="part_number">PSCC8-8</p>
+									<p class="part_much">所需数量：40</p>
+								</div>
+							</div>
+						</div>
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300341020/?ProductCode=SPSNL6-1"><img src="../../../../public/static/front/incad_detail/000223/images/img_08.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300341020/?ProductCode=SPSNL6-1">
+										<p class="part_top">流速调速器</p>
+									</a>
+									<p class="part_number">SPSNL6-1</p>
+									<p class="part_much">所需数量：2</p>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="list_information">
+						<div class="part_img_information">
+							<div class="part_border">
+								<div class="part_img">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300576650/?ProductCode=JPZSA5-P4"><img src="../../../../public/static/front/incad_detail/000223/images/img_09.jpg" /></a>
+								</div>
+								<div class="part_information">
+									<a href="http://cn.misumi-ec.com/vona2/detail/110300576650/?ProductCode=JPZSA5-P4">
+										<p class="part_top">定位销</p>
+									</a>
+									<p class="part_number">JPZSA5-P4</p>
+									<p class="part_much">所需数量：6</p>
+								</div>
+							</div>
+						</div>
+						<li class="list_btn">
+							<div class="more_btn">
+								<p>点击显示更多零件</p>
+							</div>
+						</li>
+				</ul>
+			</div>
+			<div class="careful_iformation">
+				<p><strong>※</strong><span>装置总成CAD数据由几个分总成构成。<br/>计划采用可按分总成为单位进行留用、编辑的构成。</span></p>
+			</div>
+			<div class="down_load">
+				<a href="<?php echo url($data['module_download_url']); ?>000223">
+					<p>查看零件表</p>
+				</a>
+			</div>
+			<div class="notice">
+			   注：更多免费的案例请在PC端查看。
+			</div>
+		</div>
+		<div class="return_top">
+			<img src="../../../../public/static/front/incad_detail/images/return_top.jpg" />
+		</div>
+	</body>
+	<script>
+		(function(i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r;
+			i[r] = i[r] || function() {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date();
+			a = s.createElement(o),
+				m = s.getElementsByTagName(o)[0];
+			a.async = 1;
+			a.src = g;
+			m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-6311415-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- Google Tag Manager -->
+	<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NSFBPS"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<script>
+		(function(w, d, s, l, i) {
+			w[l] = w[l] || [];
+			w[l].push({
+				'gtm.start': new Date().getTime(),
+				event: 'gtm.js'
+			});
+			var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s),
+				dl = l != 'dataLayer' ? '&l=' + l : '';
+			j.async = true;
+			j.src =
+				'//www.googletagmanager.com/gtm.js?id=' + i + dl;
+			f.parentNode.insertBefore(j, f);
+		})(window, document, 'script', 'dataLayer', 'GTM-NSFBPS');
+	</script>
+	<!-- End Google Tag Manager -->
+
+	<!-- Baidu Analytics -->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+			var hm = document.createElement("script");
+			hm.src = "//hm.baidu.com/hm.js?c86e2c4bb4ad01427261d9484e89bf8b";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	<!-- Baidu Analytics -->
+	<script src="../../../../public/static/front/incad_detail/000223/js/js.js"></script>
+
+</html>
+<div class="footer">
+<div class="foot-01">
+<a href="#" class="left"><img src="../../../public/static/front/images/mobile-bnt.png" alt="mobile" /><span>手机版</span></a>
+<a href="http://cn.misumi-ec.com/" class="right"><span>电脑版</span><img src="../../../public/static/front/images/PC-btn.png" alt="mobile" /></a>
+</div>
+<div class="copy-r">
+<p class="logo"><img src="../../../public/static/front/images/top_30.png" alt="misumi" /></p>
+<p class="copy-txt">Copyright © MISUMI Corporation All Rights Reserved.</p>
+</div>
+
+
+</div>
+</body>
+</html>
+

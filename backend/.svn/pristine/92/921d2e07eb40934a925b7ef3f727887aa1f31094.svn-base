@@ -1,0 +1,54 @@
+// JavaScript Document
+$(function(){
+$('aside.con-wrapper').on('touchstart', 'li', function(e){
+$(this).addClass('current').siblings('li').removeClass('current');
+});
+
+$('a.contact').on('click', function(e){
+var wh = $(window).height();									
+$('div.slide-contact').css('height', wh).show();
+$('aside.con-wrapper').css('height', wh).addClass('moved');
+$('html').css('position','fixed').css('overflow','hidden');
+});
+
+$('.close_btn').on('click', function(){
+$('div.slide-contact').hide();
+$('aside.con-wrapper').removeClass('moved');
+$('html').css('position','relative').css('overflow','auto');
+});
+});
+
+
+<!-- 显示窗口事件 -->
+
+$(function(){
+$('aside.slide-wrapper').on('touchstart', 'li', function(e){
+$(this).addClass('current').siblings('li').removeClass('current');
+});
+
+$('a.slide-menu').on('click', function(e){
+var wh = $(window).height();
+$('div.slide-mask').css('height', wh).show();
+$('aside.slide-wrapper').css('height', wh).addClass('moved');
+$('html').css('position','fixed').css('overflow','hidden');
+});
+
+$('div.slide-mask').on('click', function(){
+$('div.slide-mask').hide();
+$('aside.slide-wrapper').removeClass('moved');
+$('html').css('position','relative').css('overflow','auto');
+});
+});
+
+$(window).resize(function() {
+  var wh = $(window).height();
+$('div.slide-mask').css('height', wh);
+$('aside.slide-wrapper').css('height', wh);
+$('div.slide-contact').css('height', wh);
+$('aside.con-wrapper').css('height', wh);
+});
+
+
+function setSession(index){
+	sessionStorage.top = index;
+}

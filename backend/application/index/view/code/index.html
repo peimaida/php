@@ -1,0 +1,168 @@
+{__NOLAYOUT__}
+<html>
+<head>
+	<title>{$data.module_name}</title>
+	<link rel="icon" type="image/ico" href="../../../../public/static/images/favicon.ico" />
+	<style type="text/css">
+		*{margin: 0;padding: 0;font-family: "Microsoft YaHei","微软雅黑","黑体"}
+		.main{width: 700px;margin: 30px auto;overflow: hidden;}
+		.top-div h2{margin-bottom: 35px;color: #016ac6;padding-bottom: 15px;border-bottom: 1px #016ac6 dashed;padding-top: 15px;letter-spacing: 1px;}
+		.logo-div{border-top: 3px #016ac6 solid;border-bottom:1px #444 solid;}
+		.logo-div .logo-pic{width: 180px;display: block;padding: 20px 0;}
+		.content .hint{margin-bottom: 15px;font-size: 18px;}
+		.content .hint .template-link{color: #016ac6;font-size: 15px;margin-left: 20px;}
+		.content .container{padding: 20px;border: 1px #016ac6 solid;}
+		.subBtn{display: block; width: 140px;height: 50px;cursor: pointer;background-color: #ff730a; border: 0; color: #fff; font-size: 16px; font-weight: bold; border-radius: 5px; margin-top: 30px;}
+		.dlBtn{display: block; width: 140px;height: 50px;cursor: pointer;background-color: #ff730a; border: 0; color: #fff; font-size: 16px; font-weight: bold; border-radius: 5px; margin-top: 30px;text-decoration: none; line-height: 50px; text-align: center;}
+		.subBtn:hover,.dlBtn:hover{opacity: 0.7;filter:alpha(opacity=70);-webkit-opacity:0.7;-moz-opacity:0.7;}
+		.block-div{margin-bottom: 20px;}
+		.block-div label{display: block;margin-bottom: 8px;}
+		.block-div label .label-tips{color: #999;font-size: 13px;margin-left: 20px;}
+
+		.meter {height: 15px; position: relative;margin: 20px 0;background: #666;-moz-border-radius: 15px;-webkit-border-radius: 15px;border-radius: 15px;padding: 5px;display: none;}
+		.meter > span {display: block;height: 100%;-webkit-border-top-right-radius: 8px;-webkit-border-bottom-right-radius: 8px;-moz-border-radius-topright: 8px;-moz-border-radius-bottomright: 8px;border-top-right-radius: 8px;border-bottom-right-radius: 8px;-webkit-border-top-left-radius: 15px;-webkit-border-bottom-left-radius: 15px;-moz-border-radius-topleft: 15px;-moz-border-radius-bottomleft: 15px;border-top-left-radius: 15px;border-bottom-left-radius: 15px;background-color: #004098;background-image: -moz-linear-gradient(top, #004098, #016ac6);background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #004098),color-stop(1, #016ac6));background-image: -webkit-linear-gradient(#004098, #016ac6);position: relative;overflow: hidden;}
+		.meter > span:after, .animate > span > span {content: "";position: absolute;top: 0; left: 0; bottom: 0; right: 0;background-image:-webkit-gradient(linear, 0 0, 100% 100%,color-stop(.25, rgba(255, 255, 255, .2)),color-stop(.25, transparent), color-stop(.5, transparent),color-stop(.5, rgba(255, 255, 255, .2)),color-stop(.75, rgba(255, 255, 255, .2)),color-stop(.75, transparent), to(transparent));background-image:-moz-linear-gradient(-45deg,rgba(255, 255, 255, .2) 25%,transparent 25%,transparent 50%,rgba(255, 255, 255, .2) 50%,rgba(255, 255, 255, .2) 75%,transparent 75%,transparent);z-index: 1;-webkit-background-size: 50px 50px;-moz-background-size: 50px 50px;background-size: 50px 50px;-webkit-animation: move 2s linear infinite;-moz-animation: move 2s linear infinite;-webkit-border-top-right-radius: 8px;-webkit-border-bottom-right-radius: 8px;-moz-border-radius-topright: 8px;-moz-border-radius-bottomright: 8px;border-top-right-radius: 8px;border-bottom-right-radius: 8px;-webkit-border-top-left-radius: 15px;-webkit-border-bottom-left-radius: 15px;-moz-border-radius-topleft: 15px;-moz-border-radius-bottomleft: 15px;border-top-left-radius: 15px;border-bottom-left-radius: 15px;overflow: hidden;}
+		.animate > span:after {display: none;}
+		@-webkit-keyframes move {
+			0% {
+				background-position: 0 0;
+			}
+			100% {
+				background-position: 50px 50px;
+			}
+		}
+
+		@-moz-keyframes move {
+			0% {
+				background-position: 0 0;
+			}
+			100% {
+				background-position: 50px 50px;
+			}
+		}
+		.progress-txt{text-align: center;display: none;}
+	</style>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+</head>
+<body>
+	<form action="/qr" method="post" enctype="multipart/form-data">
+		<div class="main">
+			<div class="top-div">
+				<div class="logo-div">
+					<img src="../../../../public/static/front/images/code/logo_top.png" class="logo-pic">
+				</div>
+				<h2>二维码生成工具</h2>
+			</div>
+			<div class="content">
+				{if $download==0}
+				<p class="hint">请上传需要生成二维码的文件<a href="../../../../public/uploads/template/QR_create_template.xlsx" class="template-link">点我下载模板</a></p>
+				<div class="container">
+					<div class="block-div">
+						<label for="qr_file">上传文件<span class="label-tips">请上传小于1M的xlsx文件</span></label>
+						<input type="file" name="qr_file" id="qr_file" onchange="fileupload(this);">
+					</div>
+<!-- 					<div class="block-div">
+						<label for="qr_size">二维码图片尺寸</label>
+						<select class="qr_size" name="qr_size">
+							<option>大 (700*700)</option>
+							<option>中 (400*400)</option>
+							<option>小 (100*100)</option>
+						</select>
+					</div> 
+					<div class="block-div">
+						<label for="logo_file">二维码中logo图片<span class="label-tips">请上传后缀为png的正方形图片</span></label>
+						<input type="file" name="logo_file" id="logo_file">
+					</div>-->
+					<input type="submit" name="qr_submit" value="生成二维码" class="subBtn">
+					<!-- progressing bar -->
+					<div class="meter">
+						<span style="width: 0;" data-origWidth="1/100"></span>
+					</div>
+					<p class="progress-txt">二维码生成中...</p>
+
+					{if $flag==1}
+					<div style="color:red;margin-top: 10px;">{$msg}</div>
+					{/if}
+				</div>
+				{/if}
+
+				{if $download==1}
+				<p class="hint">已成功生成QR文件，本次处理共进行了{$all_time}秒</p>
+				<a href="{$link}" class="dlBtn">下载QR文件</a>
+				<br>
+				<a href="/qr">返回重新上传文件</a>
+				{/if}
+			</div>
+		</div>
+
+	</form>
+
+	<script type="text/javascript">
+		// $(document).ready(function(){
+		// 	$("#logo_file").change( function(){
+		// 		var filepath=$("input[name='logo_file']").val();
+		// 		var extStart=filepath.lastIndexOf(".");
+		// 		var ext=filepath.substring(extStart,filepath.length).toUpperCase();
+		// 		if(ext!=".PNG"){
+		// 			alert("图片限于png格式");
+		// 			$("input[name='logo_file']").val("");
+		// 			return false;
+		// 		}
+		// 		return true;
+		// 	});
+		// });
+
+		function fileupload(obj){
+			var filepath=$(obj).val();
+			var extStart=filepath.lastIndexOf(".");
+			var ext=filepath.substring(extStart,filepath.length).toUpperCase();
+			if(ext!=".XLSX"){
+				alert("请上传.xlsx格式文件");
+				$(obj).val("");
+				return false;
+			}
+
+			var isIE = /msie/i.test(navigator.userAgent) && !window.opera;
+			var fileSize = 0;
+			if(isIE && !obj.files){
+				var fileSystem = new ActiveXObject("Scripting.FileSystemObject");
+        		var file = fileSystem.GetFile(filepath);
+        		fileSize = file.Size;
+			}else{
+				fileSize = obj.files[0].size;
+			}
+			var size = fileSize / 1024 / 1024;
+			if (size>1) {
+				alert("文件不能大于1M");
+				$(obj).val("");
+				return false;
+			}
+
+			return true;
+		}
+
+    	function timeCount(){
+    		var now = $(".meter > span").data("origWidth")*$(".meter").width();
+    		if(now<=$(".meter").width()){
+    			$(".meter > span").animate({
+    	            width: now
+    	        }, 1200);
+    	        // $(".meter > span").data("origWidth",now);
+    			setTimeout("timeCount()",1000)
+    		}else{
+    			$(".meter").hide();
+    			$(".progress-txt").hide();
+    		}
+    	}
+
+    	function progressBar(){
+    		$(".meter").show();
+    		$(".progress-txt").show();
+			$(".meter > span").data("origWidth",0);
+    		timeCount();
+    	}	
+    	progressBar();
+
+	</script>
+</body>
+</html>

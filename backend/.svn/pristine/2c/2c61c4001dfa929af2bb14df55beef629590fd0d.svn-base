@@ -1,0 +1,36 @@
+.banner{position:relative;font-size:0;line-height:0}
+.incadList img{width: 100%;height: auto;display: block;}
+.advertising{margin-bottom:.6rem;position:relative;font-size:0;line-height:0}
+.floor-1{position:relative;font-size:0;line-height:0;margin-bottom:1rem}
+.floor-1 .odds2{position:absolute;left:1.2rem;bottom:1rem;width:90%}
+.floor-1 .odds2 img{width:61%;height:auto}
+.floor-2{width:100%;position:relative}
+.floor-2 .bgclass{width: 100%;margin-top: 1.5rem;}
+.floor-6 .bgclass{width:100%;position: absolute;}
+.floor-3 .bgclass{margin-top: 0;}
+.floor-2 .video-content{width:100%;position:absolute;top:34%;text-align:center}
+.floor-2 .video-content img{width:47.5%;margin-left: auto;margin-right: auto;display: block;}
+.floor-2 .video-content p{width:82.7%;font-size:1.2rem;margin-left:auto;margin-right:auto;text-align:left;padding-top:1rem;}
+.floor-2 .video-content p span{color:#dd3514}
+.floor-2-2 .video-content,.floor-3 .video-content{top:23%;}
+.floor-5{margin-bottom:1rem}
+.floor-6{line-height:0;font-size:0;}
+.floor-6 .shop-content{width:100%;padding-top: 13%;}
+.floor-6 .shop-content ul{width:92%;overflow:hidden;margin-left:auto;margin-right:auto;    padding: 1rem 0 4rem 0; background-color: #d9f0fe;}
+.floor-6 .shop-content ul li{float:left;width:47.1%;margin:.7% 1.4%}
+.floor-6 .shop-content ul li a{display:block}
+.floor-6 .shop-content ul li a img{width:100%;display:block}
+.shop-content .shop-tips{width: 90%;position: absolute; bottom: .6rem; height: 3rem;    left: 5%; z-index: 9; color: #fff; font-size: .9rem; text-align: center;line-height: 3rem;background: url(../images/incadList/incad-pc-bk.png) no-repeat;background-size: 100% 100%;}
+
+.floor-7{margin-bottom:1rem;position:relative}
+.floor-7 .video-content{top:3.1rem;text-align:center}
+.floor-7 .video-content img{width:67.3333%}
+
+.page-title{font-size: 1.6rem;}
+
+@media screen and (max-width:375px){
+	.shop-content .shop-tips{line-height: 3.5rem}
+}
+
+
+

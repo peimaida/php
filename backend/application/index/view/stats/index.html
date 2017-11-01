@@ -1,0 +1,110 @@
+{__NOLAYOUT__}
+<html>
+<head>
+	<title>{$data.module_name}</title>
+	<meta name=description content="{$data.module_description}">
+	<meta name=keywords content="{$data.module_keywords}">
+	<link rel="icon" type="image/ico" href="../../../../public/static/images/favicon.ico" />
+	<style type="text/css">
+		*{margin: 0;padding: 0;font-family: "Microsoft YaHei","微软雅黑","黑体"}
+		.main{width: 700px;margin: 30px auto;overflow: hidden;}
+		.top-div h2{margin-bottom: 35px;color: #016ac6;padding-bottom: 15px;border-bottom: 1px #016ac6 dashed;padding-top: 15px;letter-spacing: 1px;}
+		.logo-div{border-top: 3px #016ac6 solid;border-bottom:1px #444 solid;}
+		.logo-div .logo-pic{width: 180px;display: block;padding: 20px 0;}
+		.content .hint{margin-bottom: 15px;font-size: 18px;}
+		.content .hint .template-link{color: #016ac6;font-size: 15px;margin-left: 20px;}
+		.content .container{padding: 20px;border: 1px #016ac6 solid;}
+		.subBtn{display: block; width: 140px;height: 50px;cursor: pointer;background-color: #ff730a; border: 0; color: #fff; font-size: 16px; font-weight: bold; border-radius: 5px; margin-top: 30px;}
+		.dlBtn{display: block; width: 140px;height: 50px;cursor: pointer;background-color: #ff730a; border: 0; color: #fff; font-size: 16px; font-weight: bold; border-radius: 5px; margin-top: 30px;text-decoration: none; line-height: 50px; text-align: center;}
+		.subBtn:hover,.dlBtn:hover{opacity: 0.7;filter:alpha(opacity=70);-webkit-opacity:0.7;-moz-opacity:0.7;}
+		.block-div{margin-bottom: 20px;}
+		.block-div label{display: block;margin-bottom: 8px;}
+		.block-div label .label-tips{color: #999;font-size: 13px;margin-left: 20px;}
+
+		.meter {height: 15px; position: relative;margin: 20px 0;background: #666;-moz-border-radius: 15px;-webkit-border-radius: 15px;border-radius: 15px;padding: 5px;display: none;}
+		.meter > span {display: block;height: 100%;-webkit-border-top-right-radius: 8px;-webkit-border-bottom-right-radius: 8px;-moz-border-radius-topright: 8px;-moz-border-radius-bottomright: 8px;border-top-right-radius: 8px;border-bottom-right-radius: 8px;-webkit-border-top-left-radius: 15px;-webkit-border-bottom-left-radius: 15px;-moz-border-radius-topleft: 15px;-moz-border-radius-bottomleft: 15px;border-top-left-radius: 15px;border-bottom-left-radius: 15px;background-color: #004098;background-image: -moz-linear-gradient(top, #004098, #016ac6);background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #004098),color-stop(1, #016ac6));background-image: -webkit-linear-gradient(#004098, #016ac6);position: relative;overflow: hidden;}
+		.meter > span:after, .animate > span > span {content: "";position: absolute;top: 0; left: 0; bottom: 0; right: 0;background-image:-webkit-gradient(linear, 0 0, 100% 100%,color-stop(.25, rgba(255, 255, 255, .2)),color-stop(.25, transparent), color-stop(.5, transparent),color-stop(.5, rgba(255, 255, 255, .2)),color-stop(.75, rgba(255, 255, 255, .2)),color-stop(.75, transparent), to(transparent));background-image:-moz-linear-gradient(-45deg,rgba(255, 255, 255, .2) 25%,transparent 25%,transparent 50%,rgba(255, 255, 255, .2) 50%,rgba(255, 255, 255, .2) 75%,transparent 75%,transparent);z-index: 1;-webkit-background-size: 50px 50px;-moz-background-size: 50px 50px;background-size: 50px 50px;-webkit-animation: move 2s linear infinite;-moz-animation: move 2s linear infinite;-webkit-border-top-right-radius: 8px;-webkit-border-bottom-right-radius: 8px;-moz-border-radius-topright: 8px;-moz-border-radius-bottomright: 8px;border-top-right-radius: 8px;border-bottom-right-radius: 8px;-webkit-border-top-left-radius: 15px;-webkit-border-bottom-left-radius: 15px;-moz-border-radius-topleft: 15px;-moz-border-radius-bottomleft: 15px;border-top-left-radius: 15px;border-bottom-left-radius: 15px;overflow: hidden;}
+		.animate > span:after {display: none;}
+		@-webkit-keyframes move {
+			0% {
+				background-position: 0 0;
+			}
+			100% {
+				background-position: 50px 50px;
+			}
+		}
+
+		@-moz-keyframes move {
+			0% {
+				background-position: 0 0;
+			}
+			100% {
+				background-position: 50px 50px;
+			}
+		}
+		.progress-txt{text-align: center;display: none;}
+	</style>
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+	<form action="/stats" method="post" enctype="multipart/form-data">
+		<div class="main">
+			<div class="top-div">
+				<div class="logo-div">
+					<img src="../../../../public/static/front/images/code/logo_top.png" class="logo-pic">
+				</div>
+				<h2>APP分享统计工具</h2>
+			</div>
+			<div class="content">
+				{if $download==0}
+				<div class="container">
+					<div class="block-div">
+						<select style="padding:10px;" name="stats_period">
+						    <option value="0">-请选择报表统计时间段-</option>
+						    <option value="1">昨天</option>
+						    <option value="2">本月</option>
+						    <option value="3">最近3个月</option>
+						</select>
+
+						
+					</div>
+					<input type="submit" name="stats_submit" value="生成统计报表" class="subBtn">
+
+					{if $flag==1}
+					<div style="color:red;margin-top: 10px;">{$msg}</div>
+					{/if}
+				</div>
+				{/if}
+
+			</div>
+
+
+			<div class="top-div">
+				<h2>QR扫描统计工具</h2>
+			</div>
+			<div class="content">
+				{if $download==0}
+				<div class="container">					
+					<p>请选择日期：<input type="text" id="datepicker" name="datepicker"></p>
+					<input type="submit" name="scan_submit" value="下载QR扫描统计" class="subBtn" style="font-size:1em;">
+
+					{if $scan_flag==1}
+					<div style="color:red;margin-top: 10px;">{$scan_msg}</div>
+					{/if}
+				</div>
+				{/if}
+			</div>
+		</div>
+
+	</form>
+	<script>
+ 		$( function() {
+ 		  $( "#datepicker" ).datepicker({
+ 		  	dateFormat: 'yy-mm-dd'
+ 		  });
+ 		} );
+  </script>
+</body>
+</html>

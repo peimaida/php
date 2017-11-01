@@ -1,0 +1,265 @@
+		<div class="container">
+			<div class="swipe">
+				<ul id="slider">
+				{if $banners_result}
+				{foreach name="banners_result" item="value"}
+					<li>
+					{if $value['url']}
+						<a href="{$value['url']}">
+					{else}
+						<a href="javascript:void(0);">
+					{/if}
+						<img src="../../../../public/uploads/banners/{$value['source_image']}" alt="{$value['banner_title']}">
+						</a>
+					</li>
+				{/foreach}
+				{/if}
+				</ul>
+				<!--提示小按钮-->
+				{if $banners_num>0}
+				<div id="pagenavi">
+					<a href="javascript:void(0);" class="active"></a>
+					{if $banners_num>1}
+					{for start="1" end="$banners_num"}
+					<a href="javascript:void(0);" class=""></a>
+					{/for}
+					{/if}
+				</div>
+				{/if}
+				<!--左右按钮-->
+				<div class="btnContent">
+					<a class="beforeShow" href="javascript:void(0);" onClick="t4.prev();"></a>
+					<a class="nextShow" href="javascript:void(0);" onClick="t4.next();"></a>
+				</div>
+			</div>
+
+			<div class="menu-list">
+				<div class="menu-li">
+					<div class="show-menu">
+						<dl class="show-box">
+							<a href="/category" target="_self" onclick="setSession(1)">
+								<dd><img src="../../../../public/static/front/images/menu-bgcolor.png" alt="categroy" /></dd>
+								<dt>
+              <ul>
+              <li class="icon"><img src="../../../../public/static/front/images/top_04.png" /></li>
+              <li><span>商品分类</span></li>
+              </ul>
+            </dt>
+							</a>
+						</dl>
+						<dl class="show-box">
+							<a href="/topic" target="_self">
+								<dd><img src="../../../../public/static/front/images/menu-bgcolor.png" alt="topic" /></dd>
+								<dt>
+              <ul>
+              <li class="icon"><img src="../../../../public/static/front/images/top_06.png" /></li>
+              <li><span>活动特辑</span></li>
+              </ul>
+            </dt>
+							</a>
+						</dl>
+						<dl class="show-box">
+							<a href="/news" target="_self">
+								<dd><img src="../../../../public/static/front/images/menu-bgcolor.png" alt="news" /></dd>
+								<dt>
+              <ul>
+              <li class="icon"><img src="../../../../public/static/front/images/top_05.png" /></li>
+              <li><span>新闻中心</span></li>
+              </ul>
+            </dt>
+							</a>
+						</dl>
+					</div>
+					<div class="show-menu">
+						<dl class="show-box">
+							<a href="/incad" target="_self">
+								<dd><img src="../../../../public/static/front/images/menu-bgcolor.png" alt="incad" /></dd>
+								<dt>
+              <ul>
+              <li class="icon"><img src="../../../../public/static/front/images/top_07.png" /></li>
+              <li><span class="special">案例库</span></li>
+              </ul>
+            </dt>
+							</a>
+						</dl>
+						<dl class="show-box">
+							<a href="https://www.misumi-ec.com/cn/product/MN001ProductCheckCmd.do" target="_self">
+								<dd><img src="../../../../public/static/front/images/menu-bgcolor.png" alt="confirm" /></dd>
+								<dt>
+              <ul>
+              <li class="icon"><img src="../../../../public/static/front/images/top_08.png" /></li>
+              <li><span>型号确认</span></li>
+              </ul>
+            </dt>
+							</a>
+						</dl>
+					</div>
+				</div>
+			</div>
+
+			<div class="cate-list">
+				<div class="cate-naevi">
+					<a href="/category" target="_self" class="left" onclick="setSession(1)">
+						<img src="../../../../public/static/front/images/top_09.png" alt="categroy" />
+						<span>商品分类</span>
+					</a>
+					<a href="/category" class="right" target="_self" onclick="setSession(1)"><img src="../../../../public/static/front/images/top_10.png" /></a>
+				</div>
+				<div class="cate-li">
+					<ul>
+						<li>
+							<a class="li-detail" href="/category" onclick="setSession(1)">
+								<img src="../../../../public/static/front/images/topC_1.png" alt="categroy" class="img" />
+								<span>工厂自动化<br />零件</span>
+							</a>
+							<a class="li-detail" href="/category" onclick="setSession(2)">
+								<img src="../../../../public/static/front/images/topC_2.png" alt="categroy" class="img" />
+								<span>螺钉/螺栓<br />垫圈/螺帽</span>
+							</a>
+							<a class="li-detail li-last" href="/category" onclick="setSession(3)">
+								<img src="../../../../public/static/front/images/topC_3.png" alt="categroy" class="img" />
+								<span>工业用材料</span>
+							</a>
+						</li>
+						<li>
+							<a class="li-detail" href="/category" onclick="setSession(4)">
+								<img src="../../../../public/static/front/images/topC_4.png" alt="categroy" class="img" />
+								<span>接线</span>
+							</a>
+							<a class="li-detail" href="/category" onclick="setSession(5)">
+								<img src="../../../../public/static/front/images/topC_5.png" alt="categroy" class="img" />
+								<span>控制</span>
+							</a>
+							<a class="li-detail li-last" href="/category" onclick="setSession(6)">
+								<img src="../../../../public/static/front/images/topC_6.png" alt="categroy" class="img" />
+								<span>切削刀具</span>
+							</a>
+						</li>
+						<li>
+							<a class="li-detail" href="/category" onclick="setSession(7)">
+								<img src="../../../../public/static/front/images/topC_7.png" alt="categroy" class="img" />
+								<span>生产加工品</span>
+							</a>
+							<a class="li-detail" href="/category" onclick="setSession(8)">
+								<img src="../../../../public/static/front/images/topC_8.png" alt="categroy" class="img" />
+								<span>捆包/物流<br />保管用品</span>
+							</a>
+							<a class="li-detail li-last" href="/category" onclick="setSession(9)">
+								<img src="../../../../public/static/front/images/topC_9.png" alt="categroy" class="img" />
+								<span>安全用品<br />办公用品</span>
+							</a>
+						</li>
+						<li>
+							<a class="li-detail" href="/category" onclick="setSession(10)">
+								<img src="../../../../public/static/front/images/topC_10.png" alt="categroy" class="img" />
+								<span>研究管理<br />用品</span>
+							</a>
+							<a class="li-detail" href="/category" onclick="setSession(11)">
+								<img src="../../../../public/static/front/images/topC_11.png" alt="categroy" class="img" />
+								<span>冲压模具<br />用零件</span>
+							</a>
+							<a class="li-detail li-last" href="/category" onclick="setSession(12)">
+								<img src="../../../../public/static/front/images/topC_12.png" alt="categroy" class="img" />
+								<span>塑料模具<br />用零件</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="topic-list">
+				<div class="cate-naevi">
+					<a href="/topic" target="_self" class="left">
+						<img src="../../../../public/static/front/images/top_23.png" alt="categroy" />
+						<span>活动特辑</span>
+					</a>
+					<a href="/topic" class="right" target="_self"><img src="../../../../public/static/front/images/top_10.png" /></a>
+				</div>
+				<div class="top-li">
+					<div class="show-news-content">
+					{if $events_result}
+					{foreach name="events_result" item="value"}
+						<dl class="show-box">
+							<a href="/index/topic/detail/{$value['id']}" target="_self">
+								<dd><img src="../../../../public/uploads/events/title_image/{$value['source_title_image']}" alt="{$value['event_title']}" /></dd>
+								<dt><span>{$value['event_title']}</span></dt>
+							</a>
+						</dl>
+					{/foreach}
+					{/if}
+					</div>
+				</div>
+			</div>
+
+			<div class="news-list">
+				<div class="cate-naevi">
+					<a href="/news" target="_self" class="left">
+						<img src="../../../../public/static/front/images/top_25.png" alt="categroy" />
+						<span>新闻中心</span>
+					</a>
+					<a href="/news" class="right" target="_self"><img src="../../../../public/static/front/images/top_10.png" /></a>
+				</div>
+				{if $news_result}
+				{foreach name="news_result" item="value"}
+				<div class="news-li1">
+					<div class="left-i">
+						<a href="/index/news/detail/{$value['id']}"><img src="../../../../public/uploads/posts/title_image/{$value['source_title_image']}" alt="{$value['post_title']}" /></a>
+					</div>
+					<div class="txt-r">
+						{if $value['tag_id']==1}
+						<p class="p1">
+							<span>{$tag_name[1]}</span>
+						{/if}
+						{if $value['tag_id']==2}
+						<p class="p3">
+							<span>{$tag_name[2]}</span>
+						{/if}
+						{$value['start_time']|date="Y-m-d",###}
+						</p>
+						<a href="/index/news/detail/{$value['id']}"><p class="tit">
+							{$value['post_title']}
+						</p></a>
+						<div class="p2">
+							{$value['post_content']}
+						</div>
+					</div>
+				</div>
+				{/foreach}
+				{/if}
+			<div class="incad">
+				<div class="cate-naevi">
+					<a href="/incad" target="_self" class="left">
+						<img src="../../../../public/static/front/images/top_28.png" alt="categroy" />
+						<span>inCAD Library案例库</span>
+					</a>
+					<a href="/incad" class="right" target="_self"><img src="../../../../public/static/front/images/top_10.png" /></a>
+				</div>
+				<div class="incad-li">
+					<div class="show-incad">
+						<dl class="incad-box">
+							<a href="/incad/detail/000016" target="_self">
+								<dd><img src="../../../../public/static/front/images/top_29.png" alt="incad" /></dd>
+								<dt class="title"><span>NO.000016 导通检查夹具</span></dt>
+								<dt class="txt1"><span>通过拉伸弹簧使稳态位置处于断开位置</span></dt>
+							</a>
+						</dl>
+						<dl class="incad-box">
+							<a href="/incad/detail/000223" target="_self">
+								<dd><img src="../../../../public/static/front/images/top_29.png" alt="incad" /></dd>
+								<dt class="title"><span>No.000223 气缸层叠机构</span></dt>
+								<dt class="txt1"><span>接受滑轨上移动工件，纵向层叠存放5个</span></dt>
+							</a>
+						</dl>
+						<dl class="incad-box">
+							<a href="/incad/detail/000288" target="_self">
+								<dd><img src="../../../../public/static/front/images/top_29.png" alt="incad" /></dd>
+								<dt class="title"><span>No.000288 使用了连杆的挡块机构</span></dt>
+								<dt class="txt1"><span>利用旋转运动达到从垂直→水平运动转换</span></dt>
+							</a>
+						</dl>
+					</div>
+				</div>
+			</div>
+		</div>		
+		<script src="../../../../public/static/front/js/touchslider.js"></script>
+		<script src="../../../../public/static/front/js/topjs.js"></script>

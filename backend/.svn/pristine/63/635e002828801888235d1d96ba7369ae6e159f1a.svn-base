@@ -1,0 +1,153 @@
+<?php
+/*
+ * @基于TP5框架开发
+ * @Misumi Mobile Site_QR控制器
+ * @Created by MD.Pei
+*/
+
+namespace app\index\controller;
+use think\Controller;
+use think\Request;
+use think\Db;
+use think\Model;
+use app\admin\model\Maintenance;
+use think\Loader;
+
+class CodeController extends Controller{
+	//模块基本信息
+	private $data = array(
+		'logo' => 'minovate-logo.png',
+		'module_url'  => '/qr',
+		'module_name' => 'QR生成｜MISUMI-VONA',
+        'module_description' => 'QR生成',
+        'module_keywords' => 'QR生成',
+		'module_css'  => '<link rel="stylesheet" href="__FRONT_PUBLIC__/css/base.css">
+<link rel="stylesheet" href="__FRONT_PUBLIC__/css/contact.css">',//选择每个模块需要加载的css文件
+        'module_js'  => '<script type="text/javascript" src="__FRONT_PUBLIC__/js/jquery.js"></script>',//选择每个模块需要加载的js文件
+	);
+
+	public function index(){
+		$m_num = maintenance();
+		if($m_num==1){
+			if(isset($_POST['qr_submit'])){
+				$allowedExts = array("csv");
+				$temp = explode(".", $_FILES["qr_file"]["name"]);
+				$extension = end($temp);
+
+				if(!in_array($extension, $allowedExts)){
+                    $this->assign('download',0);
+					$this->assign('flag',1);
+					$this->assign('msg','请上传csv文件');
+					$this->assign('data',$this->data);
+        			return $this->fetch();
+				}
+
+				if($_FILES["qr_file"]["size"] >= 2097152){
+                    $this->assign('download',0);
+					$this->assign('flag',1);
+					$this->assign('msg','请上传小于2MB的文件');
+					$this->assign('data',$this->data);
+        			return $this->fetch();
+				}
+
+				if ($_FILES["qr_file"]["error"] > 0){
+                    $this->assign('download',0);
+					$msg = "错误：" . $_FILES["qr_file"]["error"];
+					$this->assign('flag',1);
+					$this->assign('msg',$msg);
+					$this->assign('data',$this->data);
+        			return $this->fetch();
+				}else{
+					if(is_uploaded_file($_FILES['qr_file']['tmp_name'])){  
+            			if(config('system_toggle')){//设为linux文件系统路径
+                			$path = ROOT_PATH . 'public' . DS . 'uploads/qr/';
+                			$logo_path = ROOT_PATH . 'public' . DS . 'static/images/';
+                			$logo = $logo_path . $this->data['logo'];
+            			}else{//设为windows文件系统路径
+                			$path = ROOT_PATH.'public'.DS.'uploads\qr\/';
+                            $path = rtrim($path,'/');
+                			$logo_path = ROOT_PATH.'public'.DS.'static\images\/';
+                			$logo_path = rtrim($logo_path,'/');
+                			$logo = $logo_path . $this->data['logo'];
+            			}
+            			$title = time().'.'.$extension;
+            			if(!move_uploaded_file($_FILES['qr_file']['tmp_name'],$path.$title)){
+                			$this->error('上传文件失败','/qr');
+            			}elseif(is_readable($logo)){
+		            		$content = fopen($path.$title,'r');
+        					while($content_data = fgetcsv($content)){
+        						$content_list[] = $content_data;
+        					}
+        					fclose($content);
+        					$i = 0;
+                            $result_arr1 = array();
+                            $result_arr2 = array();
+							foreach($content_list as $value){
+								$tmp_value = $value;
+        						foreach($tmp_value as $value){
+        							$img_name = time().'_'.$i.'.png';
+        							Loader::import('phpqrcode.qrlib',EXTEND_PATH);
+									$QRcode = new \QRcode();
+									$QRcode::png($value,$path.$img_name);
+                                    $result_arr1[] = $path.$img_name;
+									if(is_readable($path.$img_name)){
+                                        $QR = imagecreatefrompng($path.$img_name);
+    									$logo_tmp = imagecreatefrompng($logo_path.$this->data['logo']);
+    									$QR_width = imagesx($QR);
+    									$QR_height = imagesy($QR);
+    									$logo_width = imagesx($logo_tmp);
+    									$logo_height = imagesy($logo_tmp);
+    									$logo_qr_width = $QR_width/6;
+    									$scale = $logo_width/$logo_qr_width;
+    									$logo_qr_height = $logo_height/$scale;
+    									$from_width = ($QR_width - $logo_qr_width)/2;
+    									imagecopyresampled ($QR, $logo_tmp, $from_width, $from_width, 0, 0, $logo_qr_width, $logo_qr_height, $logo_width, $logo_height);
+    									imagepng ($QR, $path.'qr_'.$img_name);
+                                        $result_arr2[] = 'qr_'.$img_name;
+										$i++;
+									}else{
+										$this->error('生成二维码失败','/qr');
+									}
+        						}
+        					}
+                            $zip = new \ZipArchive;
+                            $zip_name = $path.'QR_'.time().'.zip';
+                            $zip_tmp = '../../../public/uploads/qr/QR_'.time().'.zip';
+                            if($zip->open($zip_name, \ZipArchive::CREATE) === TRUE){
+                                $zip->addEmptyDir('QRcode');
+                                foreach($result_arr2 as $val2){
+                                    $zip->addFile($path.$val2,'QRcode'.DS.$val2);
+                                }
+                                $zip->close();
+                                foreach($result_arr1 as $val1){
+                                    unlink($val1);
+                                }
+                                foreach($result_arr2 as $val2){
+                                    unlink($path.$val2);
+                                }
+                                $this->assign('download',1);
+                                $this->assign('flag',0);
+                                $this->assign('link',$zip_tmp);
+                                $this->assign('data',$this->data);
+                                return $this->fetch();
+                            }else{
+                                $this->error('生成压缩文件出错','/qr');
+                            }        							
+            			}else{
+        				 	$this->error('logo文件出错','/qr');
+        				}
+            		}else{
+            			$this->error('上传文件失败','/qr');
+        			}
+				}
+			}else{
+                $this->assign('download',0);
+				$this->assign('flag',0);
+				$this->assign('data',$this->data);
+        		return $this->fetch();
+			}
+        }else{
+        	$this->redirect('/maintenance');
+        }
+	}
+}

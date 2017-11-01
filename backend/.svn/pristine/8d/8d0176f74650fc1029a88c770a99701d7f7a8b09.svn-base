@@ -1,0 +1,37 @@
+// JavaScript Document
+<!-- 显示窗口事件 -->
+
+$(function(){
+$('aside.slide-wrapper').on('touchstart', 'li', function(e){
+$(this).addClass('current').siblings('li').removeClass('current');
+});
+
+$('a.contact').on('click', function(e){
+var wh = $(window).height();
+$('div.slide-contact').css('height', wh).show();
+$('aside.slide-wrapper').css('height', wh).addClass('moved');
+$('html').css('position','fixed').css('overflow','hidden');
+});
+
+$('div.slide-contact').on('click', function(){
+$('div.slide-contact').hide();
+$('aside.slide-wrapper').removeClass('moved');
+$('html').css('position','relative').css('overflow','auto');
+});
+});
+
+$(window).resize(function() {
+  var wh = $(window).height();
+$('div.slide-contact').css('height', wh);
+$('aside.slide-wrapper').css('height', wh);
+});
+
+
+
+function setSession(index){
+	sessionStorage.top = index;
+}
+
+function searchLink(){
+	window.location.href="http://cn.misumi-ec.com/vona2/result/?Keyword="+$(".input_s").val(); 
+}

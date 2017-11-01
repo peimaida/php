@@ -1,0 +1,26 @@
+{__NOLAYOUT__}
+<!DOCTYPE html>
+<html long=en>
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport">
+		<title>{$flag_title_text}</title>
+		<link rel="stylesheet" type="text/css" href="../../../../public/static/front/css/page404-style.css"/>
+		<link rel="stylesheet" href="../../../../public/static/front/css/base.css" />
+	</head>
+	
+	<body>
+		<div class="container">
+		{if $flag_content==0}
+			<div class="titl1"><h1>PAGE NOT FOUND</h1></div>
+			<section class="content-show">
+				<h4>非常抱歉，没有找到该指定的页面</h4>
+			</section>
+		{else}
+			<section class="content-show">
+				<h4>非常抱歉，创建日志目录失败</h4>
+			</section>
+		{/if}
+		</div>
+	</body>
+</html>

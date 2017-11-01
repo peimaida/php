@@ -1,0 +1,24 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:69:"E:\phpStudy\WWW\backend/application/index\view\maintenance\index.html";i:1488349666;}*/ ?>
+
+<!DOCTYPE html>
+<html long=en>
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport">
+		<title>系统维护公告</title>
+		<link rel="stylesheet" type="text/css" href="../../../../public/static/front/css/rebuid-style.css"/>
+		<link rel="stylesheet" href="../../../../public/static/front/css/base.css" />
+	</head>
+	<body>
+	<div class="container">
+		<div class="rebu">
+			<h2><img src="../../../../public/static/front/images/error/rebuid-img-1.png" alt="系统维护公告" /></h2>
+		</div>
+		<section class="content-show">
+			<h4>尊敬的客户：</h4>
+			<p>我们将于<span style="color:red;"><?php echo date("Y-m-d H:i:s",$start_time); ?> ～ <?php echo date("Y-m-d H:i:s",$end_time); ?></span>期间，进行系统维护。届时，您将无法进行页面浏览等功能。给您带来的不便，我们深表歉意。</p>
+		</section>
+		<section class="conten-img"><img src="../../../../public/static/front/images/error/rebuid-img-3.png" alt="系统维修" /></section>
+	</div>
+	</body>
+</html>
